@@ -1,0 +1,387 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Brighty-Uikit for Iphone, Android &nbsp; Smartphone Mobile Website Template | Home : w3layouts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="The free Brighty-Uikit Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(
+hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<link href="smartphone/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- bxSlider Javascript file -->
+<script src= "smartphone/js/jquery.min.js"></script>
+<script src="smartphone/js/jquery.bxslider.min.js"></script>
+<link href="smartphone/css/jquery.bxslider.css" rel="stylesheet" />
+	<script>
+		$(document).ready(function(){
+			  $('.bxslider').bxSlider();
+		});
+	</script>
+ <!-- start equalizer -->		  
+<link href="smartphone/css/jquery-ui.css" rel="stylesheet" type="text/css" media="all" />
+<script src="smartphone/js/jquery-ui.min.js"></script>
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+<script>
+$(function() {
+	 
+	    $( "#eq > span" ).each(function() {	   
+	      var value = parseInt( $( this ).text(), 10 );
+	      $( this ).empty().slider({
+	        value: value,
+	        range: "min",
+	        animate: true,
+	        orientation: "vertical"
+	      });
+	    });
+	  });
+</script>
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "777777",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "71CF97",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "2EB0E2",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "444444",
+		barColor: "#e51937",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+    
+});
+</script>
+ <!-- start price_bar  -->	
+<link href="smartphone/css/jquery.nouislider.css" rel="stylesheet">
+<script src="smartphone/js/jquery.nouislider.js"></script>
+</head>
+<body>
+<div class="wrap">
+<div class="main">
+	<!-- start menu -->
+		<div class="top-nav">
+		<nav class="clearfix">
+				<ul>
+					<li><a href="#">Portfolio</a></li>
+					<li><a href="#">About me</a></li>
+					<li><a href="#">works</a></li>
+					<li><a href="#">clients</a></li>
+					<li><a href="#">blog</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<a href="#" id="pull">Menu</a>
+			</nav>
+		<!--nav-->
+		<script>
+				$(function() {
+					var pull 		= $('#pull');
+						menu 		= $('nav ul');
+						menuHeight	= menu.height();
+		
+					$(pull).on('click', function(e) {
+						e.preventDefault();
+						menu.slideToggle();
+					});
+		
+					$(window).resize(function(){
+		        		var w = $(window).width();
+		        		if(w > 320 && menu.is(':hidden')) {
+		        			menu.removeAttr('style');
+		        		}
+		    		});
+				});
+		</script>
+	</div>
+	<div class="clear"></div>
+	<!-- start spans_of_3 -->
+	<div class="spans_of_3">
+		<div class="span1_of_1">
+			<div class="span_of_1">
+				<h3 class="style">social media</h3>
+				<ul class="soc_icons">
+					<li><a href="#"><i class="twt"></i><span>Twitter</span></a></li>
+					<li><a href="#"> <i class="fb"></i><span>Facebook</span></a></li>
+					<li><a href="#"><i class="gp"></i><span>Google+</span></a></li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+			<div class="span_of_1 top">
+				<h3 class="style">search</h3>
+			 <div class="search">
+	    		<form>
+	    			<input type="text" value="">
+	    			<input type="submit" value="">
+	    		</form>
+			</div>
+			</div>
+			<div class="span_of_1 top">
+				<h3 class="style">status recent projects</h3>
+				<div class="circle">
+				<!-- start circle -->
+				<ul>
+					<li>
+						<div class="safari chart">
+						  <div class="tag">50%</div>
+						</div>			
+						<h4 class="style">meier</h4>			
+					</li>
+					<li>
+						<div class="google chart">
+						  <div class="tag">90%</div>
+						</div>	
+						<h4 class="style">junghanns</h4>					
+					</li>
+				</ul>
+				<!-- end circle -->
+				</div>
+			</div>
+		</div>
+		<div class="span1_of_2">
+			<h3 class="style">contact me</h3>
+			<div class="contact_form">
+				<form>
+					<input type="submit" value="i want all" class="bg2">
+				</form>
+			</div>	
+			<div class="contact_form">
+				<form>
+					<input type="submit" value="now" class="bg">
+				</form>
+			</div>
+			<div class="contact_form">
+				<form>
+					<input type="submit" value="oh yes" class="bg1">
+				</form>
+			</div>
+			<div id="container">
+			  <div id="loader"></div>
+			  <p class="para">Loading...</p>
+			</div>
+			<!-- start equalizer -->
+				<div class="wrapper">
+					<div class="wrp-eq cf">
+						<div id="eq">				
+							<span>67</span>				
+							<span>69</span>				
+							<span>72</span>				
+							<span>75</span>			
+						</div>
+					</div>
+				</div>	
+			<!-- end equalizer -->
+		</div>
+		<div class="span1_of_3">
+			<div class="span_of_3">
+				<!----start-text-slider---->
+					<ul class="bxslider">
+					  <li><img src="smartphone/images/slider-pic1.jpg" />
+					  	<div class="bx_top">
+							<h3 class="style">house of family johnson</h3>
+							<p class="para">This is brand new house for family johnson.</p>
+						</div>
+					  </li>
+					  <li><img src="smartphone/images/slider-pic1.jpg" />
+					  	<div class="bx_top">
+							<h3 class="style">house of family johnson</h3>
+							<p class="para">This is brand new house for family johnson.</p>
+						</div>
+					  </li>
+					   <li><img src="smartphone/images/slider-pic1.jpg" />
+					  	<div class="bx_top">
+							<h3 class="style">house of family johnson</h3>
+							<p class="para">This is brand new house for family johnson.</p>
+						</div>
+					  </li>
+					   <li><img src="smartphone/images/slider-pic1.jpg" />
+					  	<div class="bx_top">
+							<h3 class="style">house of family johnson</h3>
+							<p class="para">This is brand new house for family johnson.</p>
+						</div>
+					  </li>
+					</ul>
+				<!----//End-text-slider---->
+				<div class="soc_icon">
+							<ul>
+							<li><a class="icon1" href="#"></a></li>
+							<li><a class="icon2" href="#"></a></li>
+							<li><a class="icon3" href="#"></a></li>
+							<div class="clear"></div>
+						</ul>	
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="span_of_3 top">
+				<h3 class="style">clients</h3>
+				<ul class="user_img">
+					<li><a href="#"><i class="user1"><img src="smartphone/images/user1.jpg" alt=""/></i><span>johnson</span></a></li>
+					<li><a href="#"> <i class="user2"><img src="smartphone/images/user2.jpg" alt=""/></i><span>bentz</span></a></li>
+					<li><a href="#"><i class="user3"><img src="smartphone/images/user3.jpg" alt=""/></i><span>carrier</span></a></li>
+					<li><a href="#"><i class="user3"><img src="smartphone/images/user4.jpg" alt=""/></i><span>carrier</span></a></li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>	
+		</div>
+	<!-- start grids_of_3 -->
+	<div class="grids_of_3">
+		<div class="grid1_of_2">
+			<h3 class="style">hire me</h3>
+			<div class="contact_form">
+				<form>
+					<span>project</span>
+					<input type="text" class="text" value="Add your project name here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}">
+					<span>message</span>
+					<textarea name="userMsg"> </textarea>
+					<input type="submit" value="send enquiry" class="bg">
+				</form>
+			</div>
+			<!-- start quick -->
+			<div class="quick">
+				<h4 class="style">budget <span>$100 000-135 000</span> </h4>
+				<div id="slider"></div>
+				<script>
+				$("#slider").noUiSlider({
+					start: [20, 80],
+					connect: true,
+					range: {
+						'min': 0,
+						'max': 100
+					}
+				});
+				</script>	
+				<h4 class="left style">$100 000</h4>	
+				<h4 class="right style">135 000</h4>	
+				<div class="clear"></div>
+			</div>
+		<!-- end quick -->
+		</div>
+		<div class="grid1_of_2">
+			<h3 class="style">contact me</h3>
+			<div class="contact_form">
+				<form>
+					<span>subject</span>
+					<input type="text" class="text" value="Add a subject here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}">
+					<span>subject</span>
+					<input type="text" class="text" value="Add a subject here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}">
+					<span>message</span>
+					<textarea name="userMsg"> </textarea>
+					<input type="submit" value="send mail" class="bg1">
+				</form>
+			</div>	
+		</div>
+		<div class="grid1_of_3">
+			<div class="grid_img">
+				<img src="smartphone/images/pic1.jpg" alt=""/>	
+			</div>
+			<div class="grid_text">
+				<h3 class="style">All borland</h3>
+				<h4 class="style">handcrafter</h4>
+				<p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin <span>standard dummy</span> text ever since the 1500s.</p>
+			</div>
+		</div>
+		<div class="clear"></div>	
+		</div>	
+	<!-- start copy-rights  -->
+	<div class="copy">
+		<p class="link">© All rights reserved | Template by&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></p>
+	</div>
+</div>
+</div>
+</body>
+</html>
