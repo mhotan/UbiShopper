@@ -10,4 +10,69 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+    <TabHost
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/tabHost"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:id="@+id/History"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <!-- Container view to scroll horizontally which gives the carousel effect -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <!-- Carousel items container - lays out items horizontally -->
+                        <LinearLayout
+                            android:id="@+id/carousel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"/>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Location"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Popularity"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
+
+                    </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
 </FrameLayout>
