@@ -57,8 +57,17 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Login"
+            android:onClick="onLogin"
+            android:id="@+id/login_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Register"
+            android:onClick="onRegister"
             android:id="@+id/register_button" />
+
     </LinearLayout>
 
 
