@@ -1,22 +1,22 @@
 package se.kth.csc.ubicomp.ubishopper;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Activity that
- *
  */
-public class HomeActivity extends ActionBarActivity {
+public class LoginActivity extends ActionBarActivity implements LoginFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_login);
 
-        
     }
 
     @Override
@@ -37,6 +37,24 @@ public class HomeActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * The User request to log in with the current
+     *
+     * @param view The view that invoked this event
+     */
+    public void onLogin(View view) {
+        startActivity(new Intent(this, UserInterestActivity.class));
+    }
+
+    /**
+     * The User request to register a new account.
+     *
+     * @param view The view that invoked this event
+     */
+    public void onRegister(View view) {
+
     }
 
 }
