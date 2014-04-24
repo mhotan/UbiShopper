@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="se.kth.csc.ubicomp.ubishopper.ProductInformationFragment">
+    tools:context="se.kth.csc.ubicomp.ubishopper.ProductInformationFragment"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -42,5 +43,22 @@
         android:id="@+id/collapseble_map_image_container">
 
         </FrameLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+        android:layout_gravity="center_horizontal" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/listView"
+        android:layout_weight="0.09" />
 
 </LinearLayout>
