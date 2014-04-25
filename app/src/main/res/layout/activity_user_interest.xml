@@ -5,10 +5,13 @@
     tools:context="${packageName}.${activityClass}">
 
     <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="se.kth.csc.ubicomp.ubishopper.UserInterestFragment"
-        android:id="@+id/fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        android:gravity="center"
+
+        android:name="se.kth.csc.ubicomp.ubishopper.userinterests.UserInterestFragment"
+        android:id="@+id/gridViewFragment"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         tools:layout="@layout/fragment_user_interest" />

@@ -44,16 +44,29 @@
 
         </FrameLayout>
 
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_weight="1"
         android:id="@+id/imageButton" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Product_details_scripts"
+            android:text="Here are the details for the products" />
+
+    </LinearLayout>
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/ratingBar" />
+
 
     <ListView
         android:layout_width="match_parent"

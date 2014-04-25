@@ -2,24 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.kth.csc.ubicomp.ubishopper.UserInterestFragment">
+    tools:context="se.kth.csc.ubicomp.ubishopper.userinterests.UserInterestFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <!--<com.etsy.android.grid.StaggeredGridView-->
-        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/grid_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--app:item_margin="8dp"-->
-        <!--app:column_count="2"/>-->
+
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridView"
+        android:layout_gravity="center"
+        android:numColumns="@integer/column_count"
+        />
 
     <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/continue_button"
         android:onClick="onContinue"
+        android:layout_gravity="center_horizontal|bottom"
         android:text="Continue"
         />
+
 
 </FrameLayout>

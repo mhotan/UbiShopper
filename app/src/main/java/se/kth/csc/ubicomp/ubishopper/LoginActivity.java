@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import se.kth.csc.ubicomp.ubishopper.userinterests.UserInterestActivity;
+
 /**
  * Activity that
  */

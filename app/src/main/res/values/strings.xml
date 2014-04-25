@@ -14,5 +14,6 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_user_interest">UserInterestActivity</string>
     <string name="title_activity_product">ProductActivity</string>
+    <string name="title_activity_gridview">GridviewActivity</string>
 
 </resources>

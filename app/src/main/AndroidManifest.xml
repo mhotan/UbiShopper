@@ -21,7 +21,7 @@
             android:label="@string/title_activity_scan" >
         </activity>
         <activity
-            android:name="se.kth.csc.ubicomp.ubishopper.UserInterestActivity"
+            android:name="se.kth.csc.ubicomp.ubishopper.userinterests.UserInterestActivity"
             android:label="@string/title_activity_user_interest" >
         </activity>
         <activity
