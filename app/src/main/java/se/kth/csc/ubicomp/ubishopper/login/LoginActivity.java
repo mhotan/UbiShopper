@@ -1,16 +1,17 @@
 package se.kth.csc.ubicomp.ubishopper.login;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import org.opencv.core.Scalar;
+import android.widget.Toast;
 
 import se.kth.csc.ubicomp.ubishopper.R;
-import se.kth.csc.ubicomp.ubishopper.UserInterestActivity;
+import se.kth.csc.ubicomp.ubishopper.userinterests.UserInterestActivity;
 
 /**
  * Activity that
@@ -61,7 +62,55 @@ public class LoginActivity extends ActionBarActivity
      * @param view The view that invoked this event
      */
     public void onRegister(View view) {
-
+        showNotYetImplementedAlertDialog();
     }
 
+    /**
+     * The User notifies application that their password is forgotten.
+     *
+     * @param view The view that invoked this event
+     */
+    public void onForgotPassword(View view) {
+        showNotYetImplementedAlertDialog();
+    }
+
+    /**
+     * The User requests to login with Facebook.
+     *
+     * @param view The view that invoked this event
+     */
+    public void onLoginWithFacebook(View view) {
+        showNotYetImplementedAlertDialog();
+    }
+
+    /**
+     * The User requests to login with Twitter.
+     *
+     * @param view The view that invoked this event
+     */
+    public void onLoginWithTwitter(View view) {
+        showNotYetImplementedAlertDialog();
+    }
+
+    /**
+     * The User requests to login with Google Plus.
+     *
+     * @param view The view that invoked this event
+     */
+    public void onLoginWithGooglePlus(View view) {
+        showNotYetImplementedAlertDialog();
+    }
+
+    @Override
+    public void onFaceRecognized(Camera.Face face) {
+        Toast.makeText(this, "Face recognized!", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, UserInterestActivity.class));
+    }
+
+    private void showNotYetImplementedAlertDialog() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setCancelable(true).setTitle("Feature Not Implemented!").
+                setMessage("We are currently still working on this feature.  Sorry for the" +
+                        " inconvenience.").create().show();
+    }
 }
