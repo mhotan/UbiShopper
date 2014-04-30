@@ -1,1 +1,1 @@
-include ':app', ':opencv-android'
+include ':app'

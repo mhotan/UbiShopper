@@ -79,7 +79,6 @@
     <orderEntry type="library" exported="" name="support-v4-19.0.1" level="project" />
     <orderEntry type="library" exported="" name="moodstocks-native" level="project" />
     <orderEntry type="library" exported="" name="commons-io-1.3.2" level="project" />
-    <orderEntry type="module" module-name="opencv-android" exported="" />
   </component>
 </module>
 
