@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="se.kth.csc.ubicomp.ubishopper.LoginActivity"
+            android:name=".login.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +28,20 @@
             android:name="se.kth.csc.ubicomp.ubishopper.ProductActivity"
             android:label="@string/title_activity_product" >
         </activity>
+
+        <!-- Permissions -->
+
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.CAMERA"/>
+
+        <!-- Uses Features -->
+
+        <uses-feature android:name="android.hardware.camera" android:required="false"/>
+        <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+        <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+        <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
     </application>
 
 </manifest>

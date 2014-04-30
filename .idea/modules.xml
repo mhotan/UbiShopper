@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UbiShopper.iml" filepath="$PROJECT_DIR$/UbiShopper.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/opencv-android/opencv-android.iml" filepath="$PROJECT_DIR$/opencv-android/opencv-android.iml" />
     </modules>
   </component>
 </project>
