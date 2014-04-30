@@ -2,7 +2,7 @@ package se.kth.csc.ubicomp.ubishopper;
 
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar;  // Actionbar for search
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;

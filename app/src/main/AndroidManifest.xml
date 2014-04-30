@@ -18,6 +18,7 @@
         </activity>
         <activity
             android:name="se.kth.csc.ubicomp.ubishopper.ScanActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_scan" >
         </activity>
         <activity
