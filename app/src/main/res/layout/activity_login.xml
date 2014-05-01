@@ -2,115 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background= "@drawable/bg"
-    android:id="@+id/login_container_layout"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="se.kth.csc.ubicomp.ubishopper.login.LoginActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/button_bar">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:onClick="onLogin"
-            android:id="@+id/login_button"
-            android:focusable="false"
-            android:focusableInTouchMode="true" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:onClick="onRegister"
-            android:id="@+id/register_button" />
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password"
-        android:onClick="onForgotPassword"
-        android:id="@+id/forgot_password_button"
-        android:layout_alignTop="@id/button_bar"
-        android:layout_alignParentRight="true"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:ems="10"
-        android:id="@+id/password_input_field"
-        android:layout_above="@id/button_bar"
-        />
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Email Address"
-        android:ems="10"
-        android:id="@+id/email_input_field"
-        android:layout_above="@id/password_input_field"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_above="@id/email_input_field"
-        android:id="@+id/social_button_bar"
-        >
-        <ImageButton
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:id="@+id/facebook_button"
-            android:layout_weight="1"
-            android:src="@drawable/facebook_orig_color"
-            android:onClick="onLoginWithFacebook"
-            style="@style/Theme.Base" />
-        <ImageButton
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/twitter_button"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_margin="10dp"
-            android:src="@drawable/twitter_orig_color"
-            android:background="@null"
-            android:onClick="onLoginWithTwitter"
-            style="@style/Theme.Base" />
-        <ImageButton
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/googleplus_button"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_margin="10dp"
-            android:src="@drawable/google_plus_orig_color"
-            android:background="@null"
-            android:onClick="onLoginWithGooglePlus"
-            style="@style/Theme.Base" />
-    </LinearLayout>
-
-    <SurfaceView
-        android:id="@+id/login_camera_preview"
-        android:layout_gravity="center_horizontal"
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/social_button_bar"/>
-
+        android:name="se.kth.csc.ubicomp.ubishopper.login.LoginFragment"
+        android:id="@+id/fragment"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        tools:layout="@layout/fragment_login" />
 </RelativeLayout>

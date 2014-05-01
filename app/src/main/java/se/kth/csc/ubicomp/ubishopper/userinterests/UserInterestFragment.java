@@ -3,14 +3,21 @@ package se.kth.csc.ubicomp.ubishopper.userinterests;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import se.kth.csc.ubicomp.ubishopper.R;
+import se.kth.csc.ubicomp.ubishopper.model.MockModel;
 
 
 /**
+ * Fragment that shows all the interests of the User.
+ *
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link UserInterestFragment.OnFragmentInteractionListener} interface
@@ -20,34 +27,28 @@ import se.kth.csc.ubicomp.ubishopper.R;
  *
  */
 public class UserInterestFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private OnFragmentInteractionListener listener;
 
-    private OnFragmentInteractionListener mListener;
+    /**
+     * The interest grid view.
+     */
+    private GridView interestGrid;
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment UserInterestFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static UserInterestFragment newInstance(String param1, String param2) {
+    public static UserInterestFragment newInstance() {
         UserInterestFragment fragment = new UserInterestFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        // TODO Set Arguments
         fragment.setArguments(args);
         return fragment;
     }
+
     public UserInterestFragment() {
         // Required empty public constructor
     }
@@ -56,8 +57,7 @@ public class UserInterestFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            // TODO Extract Arguments.
         }
     }
 
@@ -65,14 +65,28 @@ public class UserInterestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_interest, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_interest, container, false);
+
+        // Set the Adapter for
+        interestGrid = (GridView) view.findViewById(R.id.interest_grid_view);
+
+        // Set the grid for the grid view.
+        // This informs how the grid view will populate each cell.
+        UserinterestsAdapter adapter = new UserinterestsAdapter(
+                this.getActivity(), MockModel.getInstance().getInterestTypes());
+        interestGrid.setAdapter(adapter);
+
+        // Allow multiple items to be checked.
+        interestGrid.setChoiceMode(GridView.CHOICE_MODE_MULTIPLE_MODAL);
+        interestGrid.setMultiChoiceModeListener(new InterestMultiChoiceListener());
+        return view;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            listener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -82,7 +96,7 @@ public class UserInterestFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
     /**
@@ -98,6 +112,39 @@ public class UserInterestFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
 //        public void onContinue(/*Parameters for user interest*/);
+    }
+
+    /**
+     * Listener for grid view selected items.
+     */
+    private class InterestMultiChoiceListener implements GridView.MultiChoiceModeListener {
+
+        @Override
+        public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+            int numChecked = interestGrid.getCheckedItemCount();
+            mode.setSubtitle(numChecked + " interests.");
+        }
+
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.setTitle("Select your Interests");
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+        }
     }
 
 }

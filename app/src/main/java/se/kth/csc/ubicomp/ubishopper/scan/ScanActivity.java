@@ -1,22 +1,20 @@
-package se.kth.csc.ubicomp.ubishopper;
+package se.kth.csc.ubicomp.ubishopper.scan;
 
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;  // Actionbar for search
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import se.kth.csc.ubicomp.ubishopper.R;
 
 
 public class ScanActivity extends ActionBarActivity

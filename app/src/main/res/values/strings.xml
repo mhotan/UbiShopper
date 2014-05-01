@@ -16,4 +16,7 @@
     <string name="title_activity_product">ProductActivity</string>
     <string name="title_activity_gridview">GridviewActivity</string>
 
+    <!-- Interest Grid Item default text -->
+    <string name="interest_grid_item_content_description"></string>
+
 </resources>

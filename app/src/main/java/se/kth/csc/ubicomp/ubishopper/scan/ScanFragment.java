@@ -1,4 +1,4 @@
-package se.kth.csc.ubicomp.ubishopper;
+package se.kth.csc.ubicomp.ubishopper.scan;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import se.kth.csc.ubicomp.ubishopper.R;
 
 
 /**

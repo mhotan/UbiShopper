@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="se.kth.csc.ubicomp.ubishopper.ScanActivity"
+            android:name=".scan.ScanActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_scan" >
         </activity>
@@ -30,19 +30,22 @@
             android:label="@string/title_activity_product" >
         </activity>
 
-        <!-- Permissions -->
-
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.CAMERA"/>
-
-        <!-- Uses Features -->
-
-        <uses-feature android:name="android.hardware.camera" android:required="true"/>
-        <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
-        <uses-feature android:name="android.hardware.camera.front" android:required="true"/>
-        <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
 
     </application>
+
+    <!-- Permissions -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- Uses Features -->
+
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
 
 </manifest>

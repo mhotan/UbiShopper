@@ -5,4 +5,29 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- User Interest Grid Item -->
+
+    <style name="InterestItemText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_margin">@dimen/interest_grid_item_margin</item>
+        <item name="android:gravity">bottom|left</item>
+        <item name="android:textColor">@color/interest_item_text</item>
+        <item name="android:textSize">@dimen/interest_grid_item_text_size</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="InterestItemCheckBox">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_margin">@dimen/interest_grid_item_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:src">@drawable/check_mark</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+
 </resources>

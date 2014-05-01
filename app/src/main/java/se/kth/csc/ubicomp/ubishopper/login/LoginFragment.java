@@ -105,7 +105,7 @@ public class LoginFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
         loginCameraPreview = (SurfaceView) view.findViewById(R.id.login_camera_preview);
         facebookButton = (ImageButton) view.findViewById(R.id.facebook_button);
         twitterButton = (ImageButton) view.findViewById(R.id.twitter_button);
@@ -221,7 +221,7 @@ public class LoginFragment extends Fragment
             Log.w(TAG, "False no faces detected");
             return;
         }
-        if (faces.length > 0) {
+        if (faces.length > 1) {
             Toast.makeText(getActivity(), "Too many faces to authenticate",
                     Toast.LENGTH_SHORT);
             return;

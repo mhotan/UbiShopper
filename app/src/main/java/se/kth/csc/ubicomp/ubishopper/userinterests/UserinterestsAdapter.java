@@ -4,81 +4,51 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import se.kth.csc.ubicomp.ubishopper.R;
+import se.kth.csc.ubicomp.ubishopper.model.InterestType;
 
 
 /**
+ * Adapter for User interests.
+ *
  * Created by zenkig on 4/24/14.
  */
-
-public class UserinterestsAdapter extends BaseAdapter {
+public class UserinterestsAdapter extends ArrayAdapter<InterestType> {
 
     private Context context;
-    private final String[] recommanditemValues;
 
-    public UserinterestsAdapter(Context context, String[] recommanditemValues) {
+
+    /**
+     * Creates adapter for interest types.
+     *
+     * @param context The context for the adapter
+     * @param interestTypes The interest types.
+     */
+    public UserinterestsAdapter(Context context, InterestType[] interestTypes) {
+        super(context, R.layout.interest_grid_item, interestTypes);
         this.context = context;
-        this.recommanditemValues = recommanditemValues;
-
     }
-
-    @Override
-    public int getCount() {
-        return recommanditemValues.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View gridView;
+        // Populate the view for the first time.
+        // Inflate the view for the first time.
+        InterestGridItem gridView = (InterestGridItem) inflater.inflate(R.layout.interest_grid_item, parent, false);
+        // Extract the components of the grid item.
+        TextView interestLabel = (TextView) gridView.findViewById(R.id.interest_grid_item_label);
+        ImageView interestImage = (ImageView) gridView.findViewById(R.id.interest_image);
 
-        if (convertView == null) {
-
-            // get layout from mobile.xml
-            gridView = inflater.inflate(R.layout.preference_griditem, null);
-
-            // set value into textview
-            TextView textView = (TextView) gridView
-                    .findViewById(R.id.grid_labels);
-            textView.setText(recommanditemValues[position]);
-
-            // set image based on selected text
-            ImageView imageView = (ImageView) gridView
-                    .findViewById(R.id.grid_images);
-
-            String recomItems = recommanditemValues[position];
-            // Need TODO: change the , Or create a dataset of the items base.
-            if (recomItems.equals("recommendItems1...")) {
-                imageView.setImageResource(R.drawable.item1_logo);
-            } else if (recomItems.equals("recommendItems2...")) {
-                imageView.setImageResource(R.drawable.item2_logo);
-            } else if (recomItems.equals("recommendItems3...")) {
-                imageView.setImageResource(R.drawable.item3_logo);
-            } else {
-                imageView.setImageResource(R.drawable.item4_logo);
-            }
-
-        } else {
-            gridView = (View) convertView;
-        }
-
+        // Populate the fields for the item
+        interestLabel.setText(getItem(position).getName());
+        getItem(position).loadImage(interestImage);
 
         return gridView;
     }
