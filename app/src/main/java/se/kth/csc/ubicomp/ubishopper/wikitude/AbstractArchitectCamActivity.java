@@ -1,6 +1,5 @@
 package se.kth.csc.ubicomp.ubishopper.wikitude;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.ApplicationInfo;
 import android.location.Location;
@@ -25,30 +24,30 @@ import java.io.IOException;
  */
 public abstract class AbstractArchitectCamActivity extends Activity implements ArchitectViewHolderInterface{
 
-	/**
-	 * holds the Wikitude SDK AR-View, this is where camera, markers, compass, 3D models etc. are rendered
-	 */
-	protected ArchitectView architectView;
-	
-	/**
-	 * sensor accuracy listener in case you want to display calibration hints
-	 */
-	protected SensorAccuracyChangeListener sensorAccuracyListener;
-	
-	/**
-	 * last known location of the user, used internally for content-loading after user location was fetched
-	 */
-	protected Location 						lastKnownLocaton;
+    /**
+     * holds the Wikitude SDK AR-View, this is where camera, markers, compass, 3D models etc. are rendered
+     */
+    protected ArchitectView architectView;
 
-	/**
-	 * sample location strategy, you may implement a more sophisticated approach too
-	 */
-	protected ILocationProvider				locationProvider;
-	
-	/**
-	 * location listener receives location updates and must forward them to the architectView
-	 */
-	protected LocationListener 				locationListener;
+    /**
+     * sensor accuracy listener in case you want to display calibration hints
+     */
+    protected SensorAccuracyChangeListener sensorAccuracyListener;
+
+    /**
+     * last known location of the user, used internally for content-loading after user location was fetched
+     */
+    protected Location 						lastKnownLocaton;
+
+    /**
+     * sample location strategy, you may implement a more sophisticated approach too
+     */
+    protected ILocationProvider				locationProvider;
+
+    /**
+     * location listener receives location updates and must forward them to the architectView
+     */
+    protected LocationListener 				locationListener;
 
     /** Called when the activity is first created. */
     @Override
@@ -133,156 +132,156 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
     }
 
-	/**
-	 * urlListener handling "document.location= 'architectsdk://...' " calls in JavaScript"
-	 */
-	protected ArchitectUrlListener urlListener;
+    /**
+     * urlListener handling "document.location= 'architectsdk://...' " calls in JavaScript"
+     */
+    protected ArchitectUrlListener urlListener;
 
-	@Override
-	protected void onPostCreate( final Bundle savedInstanceState ) {
-		super.onPostCreate( savedInstanceState );
-		
-		if ( this.architectView != null ) {
-			
-			// call mandatory live-cycle method of architectView
-			this.architectView.onPostCreate();
-			
-			try {
-				// load content via url in architectView, ensure '<script src="architect://architect.js"></script>' is part of this HTML file, have a look at wikitude.com's developer section for API references
-				this.architectView.load( this.getARchitectWorldPath() );
+    @Override
+    protected void onPostCreate( final Bundle savedInstanceState ) {
+        super.onPostCreate( savedInstanceState );
 
-				if (this.getInitialCullingDistanceMeters() != ArchitectViewHolderInterface.CULLING_DISTANCE_DEFAULT_METERS) {
-					// set the culling distance - meaning: the maximum distance to render geo-content
-					this.architectView.setCullingDistance( this.getInitialCullingDistanceMeters() );
-				}
-				
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-	}
+        if ( this.architectView != null ) {
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		// call mandatory live-cycle method of architectView
-		if ( this.architectView != null ) {
-			this.architectView.onResume();
-			
-			// register accuracy listener in architectView, if set
-			if (this.sensorAccuracyListener!=null) {
-				this.architectView.registerSensorAccuracyChangeListener( this.sensorAccuracyListener );
-			}
-		}
+            // call mandatory live-cycle method of architectView
+            this.architectView.onPostCreate();
 
-		// tell locationProvider to resume, usually location is then (again) fetched, so the GPS indicator appears in status bar
-		if ( this.locationProvider != null ) {
-			this.locationProvider.onResume();
-		}
-	}
+            try {
+                // load content via url in architectView, ensure '<script src="architect://architect.js"></script>' is part of this HTML file, have a look at wikitude.com's developer section for API references
+                this.architectView.load( this.getARchitectWorldPath() );
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		
-		// call mandatory live-cycle method of architectView
-		if ( this.architectView != null ) {
-			this.architectView.onPause();
-			
-			// unregister accuracy listener in architectView, if set
-			if ( this.sensorAccuracyListener != null ) {
-				this.architectView.unregisterSensorAccuracyChangeListener( this.sensorAccuracyListener );
-			}
-		}
-		
-		// tell locationProvider to pause, usually location is then no longer fetched, so the GPS indicator disappears in status bar
-		if ( this.locationProvider != null ) {
-			this.locationProvider.onPause();
-		}
-	}
-	
-	@Override
-	protected void onStop() {
-		super.onStop();
-	}
+                if (this.getInitialCullingDistanceMeters() != ArchitectViewHolderInterface.CULLING_DISTANCE_DEFAULT_METERS) {
+                    // set the culling distance - meaning: the maximum distance to render geo-content
+                    this.architectView.setCullingDistance( this.getInitialCullingDistanceMeters() );
+                }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		
-		// call mandatory live-cycle method of architectView
-		if ( this.architectView != null ) {
-			this.architectView.onDestroy();
-		}
-	}
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
 
-	@Override
-	public void onLowMemory() {
-		super.onLowMemory();
-		if ( this.architectView != null ) {
-			this.architectView.onLowMemory();
-		}
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-	/**
-	 * title shown in activity
-	 * @return
-	 */
-	public abstract String getActivityTitle();
-	
-	/**
-	 * path to the architect-file (AR-Experience HTML) to launch
-	 * @return
-	 */
-	@Override
-	public abstract String getARchitectWorldPath();
-	
-	/**
-	 * url listener fired once e.g. 'document.location = "architectsdk://foo?bar=123"' is called in JS
-	 * @return
-	 */
-	@Override
-	public abstract ArchitectUrlListener getUrlListener();
-	
-	/**
-	 * @return layout id of your layout.xml that holds an ARchitect View, e.g. R.layout.camview
-	 */
-	@Override
-	public abstract int getContentViewId();
-	
-	/**
-	 * @return Wikitude SDK license key, checkout www.wikitude.com for details
-	 */
-	@Override
-	public abstract String getWikitudeSDKLicenseKey();
-	
-	/**
-	 * @return layout-id of architectView, e.g. R.id.architectView
-	 */
-	@Override
-	public abstract int getArchitectViewId();
+        // call mandatory live-cycle method of architectView
+        if ( this.architectView != null ) {
+            this.architectView.onResume();
 
-	/**
-	 * 
-	 * @return Implementation of a Location
-	 */
-	@Override
-	public abstract ILocationProvider getLocationProvider(final LocationListener locationListener);
-	
-	/**
-	 * @return Implementation of Sensor-Accuracy-Listener. That way you can e.g. show prompt to calibrate compass
-	 */
-	@Override
-	public abstract ArchitectView.SensorAccuracyChangeListener getSensorAccuracyListener();
+            // register accuracy listener in architectView, if set
+            if (this.sensorAccuracyListener!=null) {
+                this.architectView.registerSensorAccuracyChangeListener( this.sensorAccuracyListener );
+            }
+        }
 
-	/**
-	 * helper to check if video-drawables are supported by this device. recommended to check before launching ARchitect Worlds with videodrawables
-	 * @return true if AR.VideoDrawables are supported, false if fallback rendering would apply (= show video fullscreen)
-	 */
-	public static final boolean isVideoDrawablesSupported() {
-		String extensions = GLES20.glGetString( GLES20.GL_EXTENSIONS );
-		return extensions != null && extensions.contains( "GL_OES_EGL_image_external" ) && Build.VERSION.SDK_INT >= 14 ;
-	}
+        // tell locationProvider to resume, usually location is then (again) fetched, so the GPS indicator appears in status bar
+        if ( this.locationProvider != null ) {
+            this.locationProvider.onResume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // call mandatory live-cycle method of architectView
+        if ( this.architectView != null ) {
+            this.architectView.onPause();
+
+            // unregister accuracy listener in architectView, if set
+            if ( this.sensorAccuracyListener != null ) {
+                this.architectView.unregisterSensorAccuracyChangeListener( this.sensorAccuracyListener );
+            }
+        }
+
+        // tell locationProvider to pause, usually location is then no longer fetched, so the GPS indicator disappears in status bar
+        if ( this.locationProvider != null ) {
+            this.locationProvider.onPause();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // call mandatory live-cycle method of architectView
+        if ( this.architectView != null ) {
+            this.architectView.onDestroy();
+        }
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if ( this.architectView != null ) {
+            this.architectView.onLowMemory();
+        }
+    }
+
+    /**
+     * title shown in activity
+     * @return
+     */
+    public abstract String getActivityTitle();
+
+    /**
+     * path to the architect-file (AR-Experience HTML) to launch
+     * @return
+     */
+    @Override
+    public abstract String getARchitectWorldPath();
+
+    /**
+     * url listener fired once e.g. 'document.location = "architectsdk://foo?bar=123"' is called in JS
+     * @return
+     */
+    @Override
+    public abstract ArchitectUrlListener getUrlListener();
+
+    /**
+     * @return layout id of your layout.xml that holds an ARchitect View, e.g. R.layout.camview
+     */
+    @Override
+    public abstract int getContentViewId();
+
+    /**
+     * @return Wikitude SDK license key, checkout www.wikitude.com for details
+     */
+    @Override
+    public abstract String getWikitudeSDKLicenseKey();
+
+    /**
+     * @return layout-id of architectView, e.g. R.id.architectView
+     */
+    @Override
+    public abstract int getArchitectViewId();
+
+    /**
+     *
+     * @return Implementation of a Location
+     */
+    @Override
+    public abstract ILocationProvider getLocationProvider(final LocationListener locationListener);
+
+    /**
+     * @return Implementation of Sensor-Accuracy-Listener. That way you can e.g. show prompt to calibrate compass
+     */
+    @Override
+    public abstract ArchitectView.SensorAccuracyChangeListener getSensorAccuracyListener();
+
+    /**
+     * helper to check if video-drawables are supported by this device. recommended to check before launching ARchitect Worlds with videodrawables
+     * @return true if AR.VideoDrawables are supported, false if fallback rendering would apply (= show video fullscreen)
+     */
+    public static final boolean isVideoDrawablesSupported() {
+        String extensions = GLES20.glGetString( GLES20.GL_EXTENSIONS );
+        return extensions != null && extensions.contains( "GL_OES_EGL_image_external" ) && Build.VERSION.SDK_INT >= 14 ;
+    }
 
 }
