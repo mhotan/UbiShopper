@@ -29,7 +29,7 @@ import se.kth.csc.ubicomp.ubishopper.R;
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     /**
      * Remember the position of the selected item.
@@ -60,7 +60,7 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
-    public NavigationDrawerFragment() {
+    public SearchFragment() {
     }
 
     @Override
