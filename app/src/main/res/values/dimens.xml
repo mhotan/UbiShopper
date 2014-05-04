@@ -11,4 +11,7 @@
     <dimen name="interest_grid_item_text_size">30dp</dimen>
     <dimen name="interest_grid_item_margin">10dp</dimen>
 
+    <!-- Scanning for Barcodes and Image Recognition -->
+    <dimen name="scan_info_button_margin">10dp</dimen>
+
 </resources>
