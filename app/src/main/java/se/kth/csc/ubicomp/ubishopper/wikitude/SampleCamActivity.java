@@ -36,16 +36,13 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 //                EXTRAS_KEY_ACTIVITY_ARCHITECT_WORLD_URL);
 
 //        Our Application uses only one set of assets because we only require a single purpose.
-        String path = "wikitude";
+        String path = "wikitude" + File.separator + "index.html";
 		return path;
 	}
 
 	@Override
 	public String getActivityTitle() {
-		return (getIntent().getExtras() != null && getIntent().getExtras().get(
-				EXTRAS_KEY_ACTIVITY_TITLE_STRING) != null) ? getIntent()
-				.getExtras().getString(EXTRAS_KEY_ACTIVITY_TITLE_STRING)
-				: "Test-World";
+		return getApplicationContext().getString(R.string.app_name);
 	}
 
 	@Override
