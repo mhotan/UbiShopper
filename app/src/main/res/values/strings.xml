@@ -19,4 +19,9 @@
     <!-- Interest Grid Item default text -->
     <string name="interest_grid_item_content_description"></string>
 
+    <!-- Wikitude related String values -->
+    <string name="compass_accuracy_low">Please re-calibrate compass by waving your device in a figure 8 motion.</string>
+    <string name="poi_name">Name</string>
+    <string name="poi_description">Description</string>
+    <string name="poi_id">ID</string>
 </resources>
