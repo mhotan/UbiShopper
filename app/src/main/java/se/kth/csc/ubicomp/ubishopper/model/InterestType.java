@@ -47,6 +47,7 @@ public class InterestType {
      * @param name Name of the Interest type
      * @param imageUri The Uri of the image.
      */
+
     public InterestType(String name, Uri imageUri) {
         if (name == null || name.trim().isEmpty())
             throw new NullPointerException(getClass().getSimpleName() +

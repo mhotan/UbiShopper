@@ -9,17 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link RecomendationFragment.OnFragmentInteractionListener} interface
+ * {@link carousel_item.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link RecomendationFragment#newInstance} factory method to
+ * Use the {@link carousel_item#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-
-public class RecomendationFragment extends Fragment {
+public class carousel_item extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,33 +37,35 @@ public class RecomendationFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RecomendationFragment.
+     * @return A new instance of fragment carousel_item.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecomendationFragment newInstance(String param1, String param2) {
-        RecomendationFragment fragment = new RecomendationFragment();
+    public static carousel_item newInstance(String param1, String param2) {
+        carousel_item fragment = new carousel_item();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-
-    public RecomendationFragment() {
+    public carousel_item() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recomendation, container, false);
+        return inflater.inflate(R.layout.fragment_carousel_item, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -89,8 +91,6 @@ public class RecomendationFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-
 
     /**
      * This interface must be implemented by activities that contain this

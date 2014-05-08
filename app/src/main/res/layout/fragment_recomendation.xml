@@ -34,21 +34,6 @@
                     android:layout_height="fill_parent"
                     android:orientation="vertical" >
 
-                    <!-- Container view to scroll horizontally which gives the carousel effect -->
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scrollbars="none">
-
-                        <!-- Carousel items container - lays out items horizontally -->
-                        <LinearLayout
-                            android:id="@+id/carousel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"/>
-
-                    </HorizontalScrollView>
-
                 </LinearLayout>
 
                 <LinearLayout

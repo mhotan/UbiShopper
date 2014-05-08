@@ -14,6 +14,7 @@ import static se.kth.csc.ubicomp.ubishopper.R.layout.activity_user_interest;
  * Activity that contains and provides context for all the Fragments that manage
  * handling the user interests.
  */
+
 public class UserInterestActivity extends FragmentActivity implements
         UserInterestFragment.OnFragmentInteractionListener {
 
