@@ -1,7 +1,7 @@
 package se.kth.csc.ubicomp.ubishopper.login;
 
+import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -30,13 +31,11 @@ import se.kth.csc.ubicomp.ubishopper.R;
  * create an instance of this fragment.
  *
  */
-public class LoginFragment extends Fragment
-        implements SurfaceHolder.Callback, Camera.FaceDetectionListener{
+public class LoginFragment extends Fragment implements Camera.FaceDetectionListener{
 
     private static final String TAG = LoginFragment.class.getSimpleName();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // The email and password
     private static final String EMAIL_ADDRESS = "email_address";
     private static final String PASSWORD = "password";
 
@@ -44,14 +43,21 @@ public class LoginFragment extends Fragment
     private String email;
     private String password;
 
-    private Camera camera;
+    private Preview mPreview;
+    Camera mCamera;
+    int mNumberOfCameras;
+    int mCurrentCamera;  // Camera ID currently chosen
+    int mCameraCurrentlyLocked;  // Camera ID that's actually acquired
+
+    // The first rear facing camera
+    int mDefaultCameraId;
 
     private OnFragmentInteractionListener listener;
 
     /**
      * The surface view where the camera preview is drawn.
      */
-    private SurfaceView loginCameraPreview;
+    private FrameLayout previewContainer;
 
     /**
      * Social Login Buttons
@@ -72,11 +78,10 @@ public class LoginFragment extends Fragment
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param email Parameter 1.
+     * @param email Previously used email.
      * @param password Parameter 2.
      * @return A new instance of fragment LoginFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static LoginFragment newInstance(String email, String password) {
         LoginFragment fragment = new LoginFragment();
         Bundle args = new Bundle();
@@ -100,6 +105,22 @@ public class LoginFragment extends Fragment
             email = "";
             password = "";
         }
+
+        // Create a container that will hold a SurfaceView for camera previews
+        mPreview = new Preview(this.getActivity(), this);
+
+        // Find the total number of cameras available
+        mNumberOfCameras = Camera.getNumberOfCameras();
+
+        // Find the ID of the rear-facing ("default") camera
+        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+        for (int i = 0; i < mNumberOfCameras; i++) {
+            Camera.getCameraInfo(i, cameraInfo);
+            if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                mCurrentCamera = mDefaultCameraId = i;
+            }
+        }
+        setHasOptionsMenu(mNumberOfCameras > 1);
     }
 
 
@@ -109,7 +130,7 @@ public class LoginFragment extends Fragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        loginCameraPreview = (SurfaceView) view.findViewById(R.id.login_camera_preview);
+        previewContainer = (FrameLayout) view.findViewById(R.id.login_camera_preview_container);
         facebookButton = (ImageButton) view.findViewById(R.id.facebook_button);
         twitterButton = (ImageButton) view.findViewById(R.id.twitter_button);
         googlePlusButton = (ImageButton) view.findViewById(R.id.googleplus_button);
@@ -118,6 +139,7 @@ public class LoginFragment extends Fragment
         loginButton = (Button) view.findViewById(R.id.login_button);
         registerButton = (Button) view.findViewById(R.id.register_button);
         forgotPasswordButton = (Button) view.findViewById(R.id.forgot_password_button);
+        previewContainer.addView(mPreview);
         return view;
     }
 
@@ -125,17 +147,16 @@ public class LoginFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        loginCameraPreview.getHolder().addCallback(this);
-        loginCameraPreview.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-        // Open the default i.e. the first front facing camera.
-        if (Camera.getNumberOfCameras() >= 2)
-            this.camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
-        else
-            this.camera = Camera.open();
+        // Add an up arrow to the "home" button, indicating that the button will go "up"
+        // one activity in the app's Activity heirarchy.
+        // Calls to getActionBar() aren't guaranteed to return the ActionBar when called
+        // from within the Fragment's onCreate method, because the Window's decor hasn't been
+        // initialized yet.  Either call for the ActionBar reference in Activity.onCreate()
+        // (after the setContentView(...) call), or in the Fragment's onActivityCreated method.
+        Activity activity = this.getActivity();
+        ActionBar actionBar = activity.getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
-
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -177,47 +198,27 @@ public class LoginFragment extends Fragment
     @Override
     public void onResume() {
         super.onResume();
+
+        // Use mCurrentCamera to select the camera desired to safely restore
+        // the fragment after the camera has been changed
+        mCamera = Camera.open(mCurrentCamera);
+        mCameraCurrentlyLocked = mCurrentCamera;
+        mPreview.setCamera(mCamera);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        this.camera.stopPreview();
-    }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.camera.release();
-    }
+        // Because the Camera object is a shared resource, it's very
+        // important to release it when the activity is paused.
+        if (mCamera != null) {
+            mPreview.setCamera(null);
 
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        try {
-            this.camera.setPreviewDisplay(this.loginCameraPreview.getHolder());
-        } catch (Exception e) {
-            e.printStackTrace();
+            // Release the camera
+            mCamera.release();
+            mCamera = null;
         }
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        Camera.Parameters params = this.camera.getParameters();
-        List<Camera.Size> sizes = params.getSupportedPreviewSizes();
-        Camera.Size selected = sizes.get(0);
-        params.setPreviewSize(selected.width,selected.height);
-
-        // Set the parameters
-        this.camera.setParameters(params);
-        this.camera.setDisplayOrientation(90);
-        this.camera.setFaceDetectionListener(this);
-        this.camera.startPreview();
-        this.camera.startFaceDetection();
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.i("PREVIEW", "surfaceDestroyed");
     }
 
     @Override

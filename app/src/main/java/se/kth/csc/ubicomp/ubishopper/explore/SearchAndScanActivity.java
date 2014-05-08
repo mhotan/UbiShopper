@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.moodstocks.android.MoodstocksError;
@@ -25,11 +26,10 @@ import se.kth.csc.ubicomp.ubishopper.R;
 /**
  * Activity that manages the fragments for scanning location QR Codes and
  *
- *
  * @author Michael Hotan
  */
 public class SearchAndScanActivity extends ActionBarActivity implements ActionBar.TabListener,
-ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener, Scanner.SyncListener
+        ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener, Scanner.SyncListener
 {
 
     private static final String TAG = SearchAndScanActivity.class.getSimpleName();
@@ -196,7 +196,7 @@ ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteraction
 
     @Override
     public void onScannedResult(Result result) {
-        Toast.makeText(this, "Result found " + result.getValue(), Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Result found " + result.getValue(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -225,6 +225,16 @@ ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteraction
     }
 
     /**
+     * Scan Fragment postion in the tab.
+     */
+    private static final int SCANNER_FRAGMENT_POSITION = 1;
+
+    /**
+     *
+     */
+    private static final int SEARCH_FRAGMENT_POSITION = 0;
+
+    /**
      * This section page adapter handle the presentation of
      *
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -232,7 +242,15 @@ ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteraction
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        /**
+         *
+         */
         private final boolean moodstocksCompatible;
+
+        /**
+         * A reference to the Scanner Fragment.
+         */
+        private ScanFragment scanFragment;
 
         /**
          * Creates Adapter for handling fragments present in the Screen.
@@ -250,17 +268,20 @@ ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteraction
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
-                case 0:
-                    return SearchFragment.newInstance(searchQuery);
+                // Request the scanner fragment.
+                case SCANNER_FRAGMENT_POSITION:
+                    scanFragment = ScanFragment.newInstance();
+                    return scanFragment;
+                // Request the search fragment.
+                case SEARCH_FRAGMENT_POSITION:
                 default:
-                    return ScanFragment.newInstance();
+                    return SearchFragment.newInstance(searchQuery);
             }
         }
 
         @Override
         public int getCount() {
             if (!moodstocksCompatible) return 1;
-
             // Show to if is compatible
             return 2;
         }
@@ -269,15 +290,31 @@ ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteraction
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
-                case 0:
+                case SEARCH_FRAGMENT_POSITION:
                     return getString(R.string.title_section_search).toUpperCase(l);
-                case 1:
+                case SCANNER_FRAGMENT_POSITION:
                     return getString(R.string.title_section_scan).toUpperCase(l);
             }
             return null;
         }
 
+        @Override
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);
 
+            // If the ScanFragment does not exist, there no need to try and pause and resume
+            // the camera processing.
+            if (scanFragment == null) return;
+
+            // Pause and resume the camera appropiately.
+            switch (position) {
+                case SCANNER_FRAGMENT_POSITION:
+                    scanFragment.resumeScanning();
+                    break;
+                default:
+                    scanFragment.pauseScanning();
+            }
+        }
 
     }
 

@@ -25,8 +25,14 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
     Camera mCamera;
     boolean mSurfaceCreated = false;
 
-    Preview(Context context) {
+    private final Camera.FaceDetectionListener faceDetectionListener;
+
+    Preview(Context context, Camera.FaceDetectionListener faceDetectionListener) {
         super(context);
+        if (context == null) throw new NullPointerException("Null Context");
+        if (faceDetectionListener == null) throw new NullPointerException("Face Detection Listener " +
+                "is Null");
+        this.faceDetectionListener = faceDetectionListener;
 
         mSurfaceView = new SurfaceView(context);
         addView(mSurfaceView);
@@ -110,6 +116,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         }
     }
 
+    @Override
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, acquire the camera and tell it where
         // to draw.
@@ -124,10 +131,17 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         mSurfaceCreated = true;
     }
 
+    @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         // Surface will be destroyed when we return, so stop the preview.
         if (mCamera != null) {
+
+            // Stop Facial Detection
+            mCamera.stopFaceDetection();
+            mCamera.setFaceDetectionListener(null);
+
             mCamera.stopPreview();
+
         }
     }
 
@@ -166,6 +180,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         return optimalSize;
     }
 
+    @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
         // Now that the size is known, set up the camera parameters and begin
         // the preview.
@@ -173,8 +188,13 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
         requestLayout();
 
+        mCamera.setDisplayOrientation(90);
         mCamera.setParameters(parameters);
         mCamera.startPreview();
+
+        // Set the face detection parameters
+        mCamera.setFaceDetectionListener(faceDetectionListener);
+        mCamera.startFaceDetection();
     }
 
 }

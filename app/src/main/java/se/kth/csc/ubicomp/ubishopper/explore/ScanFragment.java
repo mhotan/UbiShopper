@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.moodstocks.android.AutoScannerSession;
+import com.moodstocks.android.ManualScannerSession;
 import com.moodstocks.android.MoodstocksError;
 import com.moodstocks.android.Result;
 import com.moodstocks.android.Scanner;
@@ -28,7 +29,6 @@ import se.kth.csc.ubicomp.ubishopper.R;
  * create an instance of this fragment.
  */
 public class ScanFragment extends Fragment implements AutoScannerSession.Listener {
-
 
     private static final String TAG = ScanFragment.class.getSimpleName();
 
@@ -62,9 +62,11 @@ public class ScanFragment extends Fragment implements AutoScannerSession.Listene
         return fragment;
     }
 
+    /**
+     * Required empty public constructor
+     */
     public ScanFragment() {
-        // Required empty public constructor
-
+        // Do not delete.  Class needed for embedded XML
     }
 
     @Override
@@ -104,13 +106,29 @@ public class ScanFragment extends Fragment implements AutoScannerSession.Listene
         session.stop();
     }
 
+    /**
+     * Resume the scanning.
+     */
+    public void resumeScanning() {
+        if (session == null) return;
+        session.resume();
+    }
+
+    /**
+     * Pause the scanning.
+     */
+    public void pauseScanning() {
+        if (session == null) return;
+        session.pause();
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
             listener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
+            throw new ClassCastException(activity.getClass().getName()
                     + " must implement OnFragmentInteractionListener");
         }
     }
@@ -136,6 +154,7 @@ public class ScanFragment extends Fragment implements AutoScannerSession.Listene
 
     @Override
     public void onWarning(String s) {
+        // An error occured in the
         Log.w(TAG, "Error occured in the background: " + s);
     }
 
