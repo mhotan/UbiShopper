@@ -25,4 +25,8 @@
     <string name="poi_id">ID</string>
     <string name="title_activity_search_and_scan">SearchAndScanActivity</string>
 
+    <!-- Support Screen -->
+    <string name="product_search_hint">Search for a Product</string>
+    <string name="search_nearby">See what\'s nearby</string>
+
 </resources>

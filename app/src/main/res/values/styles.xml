@@ -5,6 +5,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="ActivityFragmentBase">
+        <item name="android:background">@drawable/bg</item>
+    </style>
+
     <!-- User Interest Grid Item -->
 
     <style name="InterestItemText" parent="@android:style/TextAppearance.Medium">
@@ -28,6 +32,17 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!-- Base Button -->
+    <style name="ApplicationButtonBase" parent="android:Theme.Holo">
 
+    </style>
+
+    <style name="TextButton" parent="ApplicationButtonBase">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ImageButton" parent="ApplicationButtonBase">
+        <item name="android:background">@color/transparent</item>
+    </style>
 
 </resources>

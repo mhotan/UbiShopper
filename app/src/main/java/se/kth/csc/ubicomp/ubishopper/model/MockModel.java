@@ -16,6 +16,8 @@ public class MockModel {
 
     private final InterestType[] interestTypes;
 
+    private final Product[] products;
+
     private MockModel() {
         // Cannot Instantiate outside this class
 
@@ -30,6 +32,16 @@ public class MockModel {
         typeList.add(new InterestType("Kitchen", R.raw.kitchen));
         interestTypes = new InterestType[typeList.size()];
         typeList.toArray(interestTypes);
+
+        List<Product> productList = new ArrayList<Product>();
+        productList.add(ProductFactory.createProduct("Nike Legend Dri-Fit Poly",
+                "Synthetic shirt Dri-Fit Poly helps you stay dry and comfortable ",
+                23.99f, R.raw.nike_shirt));
+        // TODO Add more well defined Products
+
+        // Populate the array.
+        products = new Product[productList.size()];
+        productList.toArray(products);
     }
 
     /**
@@ -46,5 +58,12 @@ public class MockModel {
      */
     public InterestType[] getInterestTypes() {
         return interestTypes;
+    }
+
+    /**
+     * @return All the products of this/
+     */
+    public Product[] getProducts() {
+        return products;
     }
 }

@@ -29,7 +29,7 @@ import se.kth.csc.ubicomp.ubishopper.R;
  * @author Michael Hotan
  */
 public class SearchAndScanActivity extends ActionBarActivity implements ActionBar.TabListener,
-        ScanFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener, Scanner.SyncListener
+        ScanFragment.OnFragmentInteractionListener, SupportFragment.OnFragmentInteractionListener, Scanner.SyncListener
 {
 
     private static final String TAG = SearchAndScanActivity.class.getSimpleName();
@@ -192,6 +192,14 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
 
     }
 
+    /**
+     *
+     * @param exploreButton
+     */
+    public void onExploreSurroundingWorld(View exploreButton) {
+
+    }
+
 //    Moodstocks Sync listener
 
     @Override
@@ -237,7 +245,7 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
     /**
      * This section page adapter handle the presentation of
      *
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * A {@link FragmentPagerAdapter} That returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -275,7 +283,7 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
                 // Request the search fragment.
                 case SEARCH_FRAGMENT_POSITION:
                 default:
-                    return SearchFragment.newInstance(searchQuery);
+                    return SupportFragment.newInstance(searchQuery);
             }
         }
 

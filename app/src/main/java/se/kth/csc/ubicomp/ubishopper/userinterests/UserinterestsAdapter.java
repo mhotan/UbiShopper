@@ -41,7 +41,8 @@ public class UserinterestsAdapter extends ArrayAdapter<InterestType> {
 
         // Populate the view for the first time.
         // Inflate the view for the first time.
-        InterestGridItem gridView = (InterestGridItem) inflater.inflate(R.layout.interest_grid_item, parent, false);
+        InterestGridItem gridView = (InterestGridItem) inflater.inflate(
+                R.layout.interest_grid_item, parent, false);
         // Extract the components of the grid item.
         TextView interestLabel = (TextView) gridView.findViewById(R.id.interest_grid_item_label);
         ImageView interestImage = (ImageView) gridView.findViewById(R.id.interest_image);
