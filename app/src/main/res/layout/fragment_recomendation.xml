@@ -1,16 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="se.kth.csc.ubicomp.ubishopper.RecomendationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TabHost
+    <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/tabHost"
-        android:layout_gravity="center_horizontal|bottom">
+        tools:context="se.kth.csc.ubicomp.ubishopper.RecomendationFragment"
+        android:id="@android:id/tabhost">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -21,7 +15,9 @@
                 android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"></TabWidget>
+                android:orientation="horizontal">
+
+            </TabWidget>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -32,7 +28,13 @@
                     android:id="@+id/History"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical" >
+                    android:orientation="horizontal" >
+
+                <fragment android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/fragment_page"
+                    tools:layout="@layout/fragment_page_flip" >
+                </fragment>
 
                 </LinearLayout>
 
@@ -42,7 +44,9 @@
                     android:layout_height="fill_parent"
                     android:orientation="vertical" >
 
-                    </LinearLayout>
+
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/Popularity"
@@ -51,9 +55,10 @@
                     android:focusableInTouchMode="true"
                     android:orientation="vertical">
 
-                    </LinearLayout>
+
+
+                </LinearLayout>
             </FrameLayout>
         </LinearLayout>
-    </TabHost>
 
-</FrameLayout>
+    </TabHost>

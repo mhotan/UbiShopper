@@ -46,7 +46,7 @@ public class RecomendationFragmentAdapter extends BaseAdapter {
     @Override
     public View getView( int position, View convertView, ViewGroup parent ) {
         View view = LayoutInflater.from( _context ).
-                inflate( R.layout.page_template, parent, false );
+                inflate( R.layout.fragment_page_flip, parent, false );
 
         ImageView leftImage = (ImageView) view.findViewById( R.id.left_image );
         leftImage.setImageResource( IMAGES[position][0] );

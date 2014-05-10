@@ -1,5 +1,9 @@
 package se.kth.csc.ubicomp.ubishopper;
 
+import se.kth.csc.ubicomp.ubishopper.wikitude.RecomendationFragmentAdapter;
+import com.digitalaria.gama.pageflip.PageFlip;
+
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 /**
@@ -30,6 +35,8 @@ public class RecomendationFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    RecomendationFragmentAdapter adapter;
 
     /**
      * Use this factory method to create a new instance of
@@ -55,15 +62,38 @@ public class RecomendationFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate( savedInstanceState );
+
+        // Create adapter class for pages.
+        this.adapter = new RecomendationFragmentAdapter(this.getActivity());
+
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recomendation, container, false);
+        View view = inflater.inflate(R.layout.fragment_recomendation, container, false);
+
+        LinearLayout historyPane = null;
+        if (view != null) {
+            historyPane = (LinearLayout) view.findViewById(R.id.History);
+        }
+        LinearLayout locationPane = (LinearLayout) view.findViewById(R.id.Location);
+        LinearLayout popularityPane = (LinearLayout) view.findViewById(R.id.Popularity);
+
+        // create page flip and set fold motion.
+        PageFlip pageFlip = new PageFlip(this.getActivity());
+        pageFlip.setMotion(PageFlip.FOLD_MOTION);
+        pageFlip.setAdapter(adapter);
+
+        historyPane.addView(pageFlip);
+        locationPane.addView(pageFlip);
+        popularityPane.addView(pageFlip);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

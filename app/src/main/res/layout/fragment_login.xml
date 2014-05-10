@@ -116,8 +116,8 @@
             style="@style/Theme.Base" />
     </LinearLayout>
 
-    <SurfaceView
-        android:id="@+id/login_camera_preview"
+    <FrameLayout
+        android:id="@+id/login_camera_preview_container"
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

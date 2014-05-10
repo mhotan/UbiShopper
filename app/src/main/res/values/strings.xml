@@ -6,9 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_scan">ScanActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section_search">Search</string>
+    <string name="title_section_scan">Scan</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -24,6 +23,7 @@
     <string name="poi_name">Name</string>
     <string name="poi_description">Description</string>
     <string name="poi_id">ID</string>
-    <string name="title_activity_user_home">UserHomeActivity</string>
+    <string name="title_activity_search_and_scan">SearchAndScanActivity</string>
+    <string name="title_activity_product_activity1">ProductActivity1</string>
 
 </resources>
