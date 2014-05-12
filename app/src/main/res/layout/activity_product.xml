@@ -14,12 +14,5 @@
         android:id="@+id/fragment"
         tools:layout="@layout/fragment_product_information" />
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:name="se.kth.csc.ubicomp.ubishopper.RecomendationFragment"
-        android:id="@+id/fragment2"
-        tools:layout="@layout/fragment_recomendation" />
 
 </LinearLayout>

@@ -4,10 +4,16 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
 
+import se.kth.csc.ubicomp.ubishopper.userinterests.ScrollViewFragment;
 
 
 /**
@@ -15,19 +21,24 @@ import android.view.ViewGroup;
  * Activities that contain this fragment must implement the
  * {@link ProductInformationFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ProductInformationFragment#newInstance} factory method to
+ * Use the {@link ProductInformationFragment} factory method to
  * create an instance of this fragment.
  *
  */
-public class ProductInformationFragment extends Fragment {
+public class ProductInformationFragment extends Fragment implements TabHost.OnTabChangeListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "FragmentTabs";
+    public static final String TAB_1 = "History";
+    public static final String TAB_2 = "Location";
+    public static final String TAB_3 = "Fragments";
+
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private View mRoot;
+    private TabHost mTabHost;
+    private int mCurrentTab;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -35,23 +46,22 @@ public class ProductInformationFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment ProductInformationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProductInformationFragment newInstance(String param1, String param2) {
+/*    public static ProductInformationFragment newInstance(String param1, String param2) {
         ProductInformationFragment fragment = new ProductInformationFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
     public ProductInformationFragment() {
         // Required empty public constructor
     }
 
+/*
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,13 +69,49 @@ public class ProductInformationFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_information, container, false);
+        // return inflater.inflate(R.layout.fragment_product_information, container, false);
+        mRoot = inflater.inflate(R.layout.fragment_product_information, null);
+        mTabHost = (TabHost) mRoot.findViewById(android.R.id.tabhost);
+        setupTabs();
+        return mRoot;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
+
+        mTabHost.setOnTabChangedListener(this);
+        mTabHost.setCurrentTab(mCurrentTab);
+        // manually start loading stuff in the first tab
+        updateTab(TAB_1, R.id.History);
+    }
+
+    private void setupTabs() {
+        mTabHost.setup(); // you must call this before adding your tabs!
+        mTabHost.addTab(newTab(TAB_1, R.string.tab_1, R.id.History));
+        mTabHost.addTab(newTab(TAB_2, R.string.tab_2, R.id.Location));
+        mTabHost.addTab(newTab(TAB_3, R.string.tab_3, R.id.Popularity));
+    }
+
+    private TabSpec newTab(String tag, int labelId, int tabContentId) {
+        Log.d(TAG, "buildTab(): tag=" + tag);
+
+        View indicator = LayoutInflater.from(getActivity()).inflate(
+                R.layout.tab,
+                (ViewGroup) mRoot.findViewById(android.R.id.tabs), false);
+        ((TextView) indicator.findViewById(R.id.text)).setText(labelId);
+
+        TabSpec tabSpec = mTabHost.newTabSpec(tag);
+        tabSpec.setIndicator(indicator);
+        tabSpec.setContent(tabContentId);
+        return tabSpec;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -74,6 +120,36 @@ public class ProductInformationFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+    @Override
+    public void onTabChanged(String tabId) {
+        Log.d(TAG, "onTabChanged(): tabId=" + tabId);
+        if (TAB_1.equals(tabId)) {
+            updateTab(tabId, R.id.History);
+            mCurrentTab = 0;
+            return;
+        }
+        if (TAB_2.equals(tabId)) {
+            updateTab(tabId, R.id.Location);
+            mCurrentTab = 1;
+            return;
+        }
+        if (TAB_3.equals(tabId)) {
+            updateTab(tabId, R.id.Popularity);
+            mCurrentTab = 2;
+            return;
+        }
+    }
+
+    private void updateTab(String tabId, int placeholder) {
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager.findFragmentByTag(tabId) == null) {
+            fragmentManager.beginTransaction()
+                    .replace(placeholder, ScrollViewFragment.newInstance(), tabId)
+                    .commit();
+        }
+    }
+
 
     @Override
     public void onAttach(Activity activity) {

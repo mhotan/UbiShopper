@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import se.kth.csc.ubicomp.ubishopper.userinterests.ScrollViewFragment;
+
 
 public class ProductActivity extends FragmentActivity implements
-        ProductInformationFragment.OnFragmentInteractionListener, RecomendationFragment.OnFragmentInteractionListener {
+        ProductInformationFragment.OnFragmentInteractionListener, ScrollViewFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

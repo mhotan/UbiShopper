@@ -26,4 +26,8 @@
     <string name="title_activity_search_and_scan">SearchAndScanActivity</string>
     <string name="title_activity_product_activity1">ProductActivity1</string>
 
+    <string name="tab_1">History</string>
+    <string name="tab_2">Location</string>
+    <string name="tab_3">Popularity</string>
+
 </resources>

@@ -1,8 +1,4 @@
-package se.kth.csc.ubicomp.ubishopper;
-
-import se.kth.csc.ubicomp.ubishopper.wikitude.RecomendationFragmentAdapter;
-import com.digitalaria.gama.pageflip.PageFlip;
-
+package se.kth.csc.ubicomp.ubishopper.userinterests;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -11,74 +7,45 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
+import se.kth.csc.ubicomp.ubishopper.R;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link RecomendationFragment.OnFragmentInteractionListener} interface
+ * {@link ScrollViewFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link RecomendationFragment#newInstance} factory method to
+ * Use the {@link ScrollViewFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
 
-public class RecomendationFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class ScrollViewFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-
-    RecomendationFragmentAdapter adapter;
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecomendationFragment.
+     * @return A new instance of fragment ScrollViewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecomendationFragment newInstance(String param1, String param2) {
-        RecomendationFragment fragment = new RecomendationFragment();
+    public static ScrollViewFragment newInstance() {
+        ScrollViewFragment fragment = new ScrollViewFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-
-    public RecomendationFragment() {
+    public ScrollViewFragment() {
         // Required empty public constructor
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-
-        // Create adapter class for pages.
-        this.adapter = new RecomendationFragmentAdapter(this.getActivity());
-
-
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_recomendation, container, false);
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_scroll_view, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,8 +71,6 @@ public class RecomendationFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-
 
     /**
      * This interface must be implemented by activities that contain this
