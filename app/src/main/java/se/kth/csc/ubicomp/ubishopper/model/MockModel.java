@@ -19,6 +19,8 @@ public class MockModel {
     private final Product[] products;
 
 
+    private final Product[] products;
+
     private MockModel() {
         // Cannot Instantiate outside this class
 
@@ -34,18 +36,15 @@ public class MockModel {
         interestTypes = new InterestType[typeList.size()];
         typeList.toArray(interestTypes);
 
-        // Populate the Product Model full of data.
         List<Product> productList = new ArrayList<Product>();
-        productList.add(new Product("Adidas", R.raw.clothes,56,"newest hood with James Lebron",4.20));
-        productList.add(new Product("FashionShoes", R.raw.fashionshoes,81,"Micheal Kors new season women",3.8));
-        productList.add(new Product("Iphone", R.raw.iphone,588,"iphone5s,black, 4.0inches with unlocked and brand new with touchID",4.0));
-        productList.add(new Product("Guitar", R.raw.guitar,120,"Classical guitar for new learners",3.6));
-        productList.add(new Product("Banana", R.raw.fruits,2,"per kg, fresh from Malaysia",4.31));
-        productList.add(new Product("Tomato", R.raw.vegetable,3,"per kg, local farm produced, GMO free!",4.6));
-        productList.add(new Product("Drink", R.raw.drink,6,"Redbull keep you energetic all day long",3.4));
-        products = new Product[productList.size()];
-        typeList.toArray(products);
+        productList.add(ProductFactory.createProduct("Nike Legend Dri-Fit Poly",
+                "Synthetic shirt Dri-Fit Poly helps you stay dry and comfortable ",
+                23.99f, R.raw.nike_shirt));
+        // TODO Add more well defined Products
 
+        // Populate the array.
+        products = new Product[productList.size()];
+        productList.toArray(products);
     }
 
     /**
@@ -64,12 +63,10 @@ public class MockModel {
         return interestTypes;
     }
 
-
     /**
-     * @return Product Names.
+     * @return All the products of this/
      */
     public Product[] getProducts() {
         return products;
     }
-
 }

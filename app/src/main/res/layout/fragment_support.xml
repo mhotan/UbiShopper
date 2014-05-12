@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ActivityFragmentBase"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="se.kth.csc.ubicomp.ubishopper.explore.SupportFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/fragment_horizontal_margin"
+        android:layout_alignParentTop="true"
+        android:id="@+id/location_pane">
+
+        <AutoCompleteTextView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/location_search_field"
+            android:hint="Type your current location"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dip"
+            style="@style/ImageButton"
+            android:id="@+id/find_location_button"
+            android:src="@drawable/ic_action_place"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/location_pane"
+        android:gravity="center"
+        android:layout_margin="@dimen/fragment_horizontal_margin"
+        android:id="@+id/check_surrounding_area">
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            style="@style/TextButton"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/search_nearby" />
+
+        <ImageButton
+            style="@style/ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/check_surrounding_button"
+            android:src="@drawable/ic_eye"
+            android:onClick="onExploreSurroundingWorld"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/fragment_horizontal_margin"
+        android:layout_below="@id/check_surrounding_area"
+        android:id="@+id/product_search_pane">
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/product_search_bar"
+            android:hint="@string/product_search_hint"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/ImageButton"
+            android:id="@+id/search_button"
+            android:src="@drawable/ic_action_search" />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/product_list"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/product_search_pane"
+        />
+
+
+</RelativeLayout>

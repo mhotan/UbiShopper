@@ -30,4 +30,8 @@
     <string name="tab_2">Location</string>
     <string name="tab_3">Popularity</string>
 
+    <!-- Support Screen -->
+    <string name="product_search_hint">Search for a Product</string>
+    <string name="search_nearby">See what\'s nearby</string>
+
 </resources>
