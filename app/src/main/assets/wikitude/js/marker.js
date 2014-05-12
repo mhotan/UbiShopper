@@ -109,8 +109,6 @@ Marker.prototype.getOnClickTrigger = function(marker) {
 
 Marker.prototype.setSelected = function(marker) {
 
-
-
     marker.isSelected = true;
 
     // New: 
