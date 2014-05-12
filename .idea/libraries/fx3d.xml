@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="fx3d">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/fx3d.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
