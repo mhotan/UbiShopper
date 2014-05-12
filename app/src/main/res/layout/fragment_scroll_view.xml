@@ -21,37 +21,153 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                <RelativeLayout android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:text="Iphone5"
-                    android:src="@raw/iphone" />
+                >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/iphone"
+                        android:id="@+id/iphone_image"/>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@raw/fruits" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Iphone5"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/iphone_image"
+                        android:layout_alignBottom="@+id/iphone_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext1" />
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@raw/clothes" />
+                </RelativeLayout>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@raw/guitar" />
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                <RelativeLayout android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@raw/fashionshoes" />
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/fruits"
+                        android:id="@+id/fruits_image"/>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Banana"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/fruits_image"
+                        android:layout_alignBottom="@+id/fruits_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext2" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@raw/vegetable" />
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/fruits"
+                        android:id="@+id/clothes_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Addidas Hood"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/clothes_image"
+                        android:layout_alignBottom="@+id/clothes_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext3" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/guitar"
+                        android:id="@+id/guitar_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Classic Guitar"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/guitar_image"
+                        android:layout_alignBottom="@+id/guitar_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext4" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/guitar"
+                        android:id="@+id/fashionshoes_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Micheal Kors Shoes"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/fashionshoes_image"
+                        android:layout_alignBottom="@+id/fashionshoes_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext5" />
+
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/vegetable"
+                        android:id="@+id/vegetable_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Micheal Kors Shoes"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/vegetable_image"
+                        android:layout_alignBottom="@+id/vegetable_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext6" />
+
+                </RelativeLayout>
 
             </LinearLayout>
         </HorizontalScrollView>

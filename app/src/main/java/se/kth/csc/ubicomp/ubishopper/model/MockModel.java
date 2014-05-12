@@ -16,8 +16,6 @@ public class MockModel {
     private static MockModel instance;
 
     private final InterestType[] interestTypes;
-    private final Product[] products;
-
 
     private final Product[] products;
 
