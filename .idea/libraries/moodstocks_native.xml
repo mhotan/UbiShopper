@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="moodstocks-native">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/moodstocks-native.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
