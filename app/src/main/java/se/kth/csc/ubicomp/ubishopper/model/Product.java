@@ -1,7 +1,6 @@
 package se.kth.csc.ubicomp.ubishopper.model;
 
 import android.net.Uri;
-import android.widget.ImageView;
 
 import java.util.UUID;
 

@@ -1,12 +1,13 @@
 package se.kth.csc.ubicomp.ubishopper.explore;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -22,6 +23,7 @@ import com.moodstocks.android.Scanner;
 import java.util.Locale;
 
 import se.kth.csc.ubicomp.ubishopper.R;
+import se.kth.csc.ubicomp.ubishopper.wikitude.SampleCamHandlePoiDetailActivity;
 
 /**
  * Activity that manages the fragments for scanning location QR Codes and
@@ -29,8 +31,8 @@ import se.kth.csc.ubicomp.ubishopper.R;
  * @author Michael Hotan
  */
 public class SearchAndScanActivity extends ActionBarActivity implements ActionBar.TabListener,
-        ScanFragment.OnFragmentInteractionListener, SupportFragment.OnFragmentInteractionListener, Scanner.SyncListener
-{
+        ScanFragment.OnFragmentInteractionListener, SupportFragment.OnFragmentInteractionListener,
+        Scanner.SyncListener {
 
     private static final String TAG = SearchAndScanActivity.class.getSimpleName();
 
@@ -80,7 +82,7 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
         }
 
         // Set up the action bar.
-        final ActionBar actionBar = getActionBar();
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // If the activity was created for the first time
@@ -168,18 +170,18 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
     }
 
     @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, switch to the corresponding page in
-        // the ViewPager.
+    public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
         mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+        // Nothing to do.
     }
 
     @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+        // Nothing to do.
     }
 
     /**
@@ -189,15 +191,19 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
      */
     public void onScanInfoButtonClicked(View infoButton) {
         // TODO Handle the presentation of the information for the Scan Button
-
+        new AlertDialog.Builder(this).
+                setTitle("Scan Around").
+                setMessage("Scan nearby QRCodes and Images so we can assist you with your current location").
+                setCancelable(true).create().show();
     }
 
     /**
+     * The user request to
      *
-     * @param exploreButton
+     * @param exploreButton The button that invoked the callback
      */
     public void onExploreSurroundingWorld(View exploreButton) {
-
+        startActivity(new Intent(this, SampleCamHandlePoiDetailActivity.class));
     }
 
 //    Moodstocks Sync listener

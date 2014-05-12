@@ -7,13 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 import se.kth.csc.ubicomp.ubishopper.model.Product;
-import se.kth.csc.ubicomp.ubishopper.userinterests.InterestGridItem;
 
 /**
  * Created by mhotan on 5/8/14.

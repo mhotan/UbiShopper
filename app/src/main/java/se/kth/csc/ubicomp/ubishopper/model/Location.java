@@ -1,7 +1,5 @@
 package se.kth.csc.ubicomp.ubishopper.model;
 
-import android.widget.Filterable;
-
 /**
  * Basic class for a Mock Location
  *

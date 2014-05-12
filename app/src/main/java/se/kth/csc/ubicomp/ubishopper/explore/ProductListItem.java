@@ -2,7 +2,6 @@ package se.kth.csc.ubicomp.ubishopper.explore;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;

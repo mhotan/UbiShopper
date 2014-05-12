@@ -27,8 +27,7 @@
             android:layout_marginLeft="5dip"
             style="@style/ImageButton"
             android:id="@+id/find_location_button"
-            android:src="@drawable/ic_action_place"
-            android:onClick=""/>
+            android:src="@drawable/ic_action_place"/>
 
     </LinearLayout>
 
@@ -53,7 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/check_surrounding_button"
-            android:src="@drawable/ic_eye" />
+            android:src="@drawable/ic_eye"
+            android:onClick="onExploreSurroundingWorld"/>
 
     </LinearLayout>
 
