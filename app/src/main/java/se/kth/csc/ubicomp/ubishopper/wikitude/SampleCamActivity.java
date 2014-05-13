@@ -3,13 +3,11 @@ package se.kth.csc.ubicomp.ubishopper.wikitude;
 import android.hardware.SensorManager;
 import android.location.LocationListener;
 import android.widget.Toast;
-
 import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
+import se.kth.csc.ubicomp.ubishopper.R;
 
 import java.io.File;
-
-import se.kth.csc.ubicomp.ubishopper.R;
 
 
 public class SampleCamActivity extends AbstractArchitectCamActivity {
@@ -32,10 +30,6 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
     @Override
     public String getARchitectWorldPath() {
-//        String path = getIntent().getExtras().getString(
-//                EXTRAS_KEY_ACTIVITY_ARCHITECT_WORLD_URL);
-
-//        Our Application uses only one set of assets because we only require a single purpose.
         String path = "wikitude" + File.separator + "index.html";
         return path;
     }

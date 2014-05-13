@@ -1,10 +1,16 @@
 package se.kth.csc.ubicomp.ubishopper.model;
 
 import android.net.Uri;
+import org.json.JSONObject;
 
+import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
+ * Class that represents a product that can be found in the store.
+ *
  * Created by mhotan on 5/8/14.
  */
 public class Product {
@@ -20,6 +26,8 @@ public class Product {
     private Uri imageUri;
 
     private int imageResourceId;
+
+    private boolean onSale;
 
     private static final int NO_IMAGE = -1;
 
@@ -44,6 +52,7 @@ public class Product {
         this.price = price;
         this.imageUri = null;
         this.imageResourceId = NO_IMAGE;
+        this.onSale = false;
     }
 
     public void setImageUri(Uri imageUri) {
@@ -83,4 +92,26 @@ public class Product {
     public float getPrice() {
         return price;
     }
+
+    public String getPriceString() {
+        return NumberFormat.getCurrencyInstance().format(getPrice());
+    }
+
+    /**
+     * Returns this product as a JSON Object. Latitude and Longitude are not included in the
+     * returned JSON object.  They can put applied late.
+     *
+     * @return The
+     */
+    public JSONObject toPOIInformation() {
+        Map<String, String> poiInformation = new HashMap<String, String>();
+        poiInformation.put(POIConstants.ATTR_ID, getId().toString());
+        poiInformation.put(POIConstants.ATTR_NAME, getName());
+        poiInformation.put(POIConstants.ATTR_DESCRIPTION, onSale ?
+                "SALE " : "" + getPriceString());
+        poiInformation.put(POIConstants.ATTR_ALTITUDE, String.valueOf(POIConstants.UNKNOWN_ALTITUDE));
+        return new JSONObject(poiInformation);
+    }
+
+
 }
