@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="se.kth.csc.ubicomp.ubishopper.ProductInformationFragment">
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/product_title_label"
+            android:textColor="#8bab42"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Product A"
+            android:layout_alignParentTop="true"
+            style="@style/Widget.AppCompat.Light.ActionButton" />
+
+        <ImageView
+            android:layout_width="150dip"
+            android:layout_height="150dip"
+            android:id="@+id/product_info_image"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/product_title_label"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/product_details"
+            android:text=" The details for the products"
+            android:gravity="center"
+            android:textColor="#8bab42"
+            android:layout_below="@+id/product_title_label"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/product_info_image"
+            android:layout_toRightOf="@+id/product_info_image"
+            />
+
+        <RatingBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_rating"
+            android:layout_gravity="center"
+
+            android:layout_below="@+id/product_details"/>
+
+        </RelativeLayout>
+
+
+    <!-- Recommendations go here -->
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#EFEFEF"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <FrameLayout
+                    android:id="@+id/History"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <FrameLayout
+                    android:id="@+id/Location"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <FrameLayout
+                    android:id="@+id/Popularity"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>

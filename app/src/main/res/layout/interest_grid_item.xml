@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<se.kth.csc.ubicomp.ubishopper.userinterests.InterestGridItem
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/interest_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/checkbox_image"
+        style="@style/InterestItemCheckBox"
+        android:layout_alignLeft="@id/interest_image"
+        android:layout_alignTop="@id/interest_image"
+        android:layout_alignRight="@id/interest_image"
+        android:layout_alignBottom="@id/interest_image"
+        />
+
+    <TextView
+        android:id="@+id/interest_grid_item_label"
+        style="@style/InterestItemText"
+        android:text="Hello"
+        android:layout_alignLeft="@id/interest_image"
+        android:layout_alignTop="@id/interest_image"
+        android:layout_alignRight="@id/interest_image"
+        android:layout_alignBottom="@id/interest_image"
+        />
+
+</se.kth.csc.ubicomp.ubishopper.userinterests.InterestGridItem>

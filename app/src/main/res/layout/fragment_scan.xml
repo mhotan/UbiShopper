@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scan_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="se.kth.csc.ubicomp.ubishopper.explore.ScanFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <SurfaceView
+        android:id="@+id/scan_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+
+    <ImageButton
+        android:id="@+id/information_button"
+        android:src="@android:drawable/ic_dialog_info"
+        android:onClick="onScanInfoButtonClicked"
+        android:layout_margin="@dimen/scan_info_button_margin"
+        android:background="@null"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
