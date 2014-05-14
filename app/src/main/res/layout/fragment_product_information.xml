@@ -1,85 +1,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="se.kth.csc.ubicomp.ubishopper.ProductInformationFragment"
-    android:weightSum="1">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="se.kth.csc.ubicomp.ubishopper.ProductInformationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="6dp">
+        android:layout_weight="1">
 
-        <ImageView
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:id="@+id/product_information_image"/>
-
-        <LinearLayout
+        <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/product_title_label"
+            android:textColor="#8bab42"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Product A"
+            android:layout_alignParentTop="true"
+            style="@style/Widget.AppCompat.Light.ActionButton" />
 
-            <TextView
-                android:layout_height="40dp"
-                android:layout_width="match_parent"
-                android:id="@+id/product_title_label"
-                android:textColor="#8bab42"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:text="Product A"
-                style="@style/Widget.AppCompat.Light.ActionButton" />
-            <TextView
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/product_information_label"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#8bab42"
-                />
-        </LinearLayout>
-    </LinearLayout>
+        <ImageView
+            android:layout_width="150dip"
+            android:layout_height="150dip"
+            android:id="@+id/product_info_image"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/product_title_label"
+            />
 
-    <FrameLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/collapseble_map_image_container">
-
-    </FrameLayout>
-
-    <LinearLayout android:layout_width="366dp"
-        android:layout_height="wrap_content">
-
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_weight="1"
-        android:id="@+id/imageButton" />
-
-        <EditText
-            android:layout_width="169dp"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/Product_details_scripts"
+            android:id="@+id/product_details"
             android:text=" The details for the products"
-            android:textColor="#8bab42" />
+            android:gravity="center"
+            android:textColor="#8bab42"
+            android:layout_below="@+id/product_title_label"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/product_info_image"
+            android:layout_toRightOf="@+id/product_info_image"
+            />
 
-    </LinearLayout>
+        <RatingBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_rating"
+            android:layout_gravity="center"
 
-    <RatingBar
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar" />
+            android:layout_below="@+id/product_details"/>
+
+        </RelativeLayout>
+
 
     <!-- Recommendations go here -->
     <TabHost
         android:id="@android:id/tabhost"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#EFEFEF">
+        android:background="#EFEFEF"
+        android:layout_weight="1">
 
         <LinearLayout
             android:orientation="vertical"

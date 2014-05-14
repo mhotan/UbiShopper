@@ -53,8 +53,8 @@ var World = {
 
         // loop through POI-information and create an AR.GeoObject (=Marker) per POI
         for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
-            //  Vary the number
-            var locationVariance = .005;
+            //  Vary the the latitude and longitude
+            var locationVariance = .003;
             var lat = parseFloat(latitude) + ((Math.random() * locationVariance) - locationVariance / 2);
             var long = parseFloat(longitude) + ((Math.random() * locationVariance) - locationVariance / 2);
 
@@ -109,7 +109,7 @@ var World = {
         document.location = architectSdkUrl;
     },
 
-    // location updates, fired every time you call architectView.setLocation() in native environment
+    // location updates, fired every time you call architectView.setHighlightedLocation() in native environment
     locationChanged: function locationChangedFn(lat, lon, alt, acc) {
 
         // store user's current location in World.userLocation, so you always know where user is

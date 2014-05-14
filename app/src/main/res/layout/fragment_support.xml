@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:id="@+id/location_search_field"
-            android:hint="Type your current location"
+            android:hint="Where are you currently?"
             />
 
         <ImageButton
@@ -65,7 +65,7 @@
         android:layout_below="@id/check_surrounding_area"
         android:id="@+id/product_search_pane">
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"

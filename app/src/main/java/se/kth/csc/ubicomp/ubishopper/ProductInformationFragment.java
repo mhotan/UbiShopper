@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-
+import se.kth.csc.ubicomp.ubishopper.model.MockModel;
+import se.kth.csc.ubicomp.ubishopper.model.Product;
 import se.kth.csc.ubicomp.ubishopper.userinterests.ScrollViewFragment;
 
 
@@ -61,6 +63,15 @@ public class ProductInformationFragment extends Fragment implements TabHost.OnTa
         mRoot = inflater.inflate(R.layout.fragment_product_information, null);
         mTabHost = (TabHost) mRoot.findViewById(android.R.id.tabhost);
         setupTabs();
+
+        Product product = MockModel.getInstance().getHighlightedProduct();
+        if (product != null) {
+            ((TextView) mRoot.findViewById(R.id.product_title_label)).setText(product.getName());
+            ImageView imgView = (ImageView) mRoot.findViewById(R.id.product_info_image);
+            product.loadImage(imgView);
+            ((TextView) mRoot.findViewById(R.id.product_details)).setText(product.getPriceString());
+        }
+
         return mRoot;
     }
 

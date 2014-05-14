@@ -3,7 +3,6 @@ package se.kth.csc.ubicomp.ubishopper.wikitude;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 
 public class SamplePoiDetailActivity extends Activity {

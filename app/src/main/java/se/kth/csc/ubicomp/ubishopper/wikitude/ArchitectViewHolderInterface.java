@@ -1,7 +1,6 @@
 package se.kth.csc.ubicomp.ubishopper.wikitude;
 
 import android.location.LocationListener;
-
 import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
 

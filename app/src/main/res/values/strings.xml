@@ -33,5 +33,6 @@
     <!-- Support Screen -->
     <string name="product_search_hint">Search for a Product</string>
     <string name="search_nearby">See what\'s nearby</string>
+    <string name="location_fetching">Trying to find out where you are</string>
 
 </resources>

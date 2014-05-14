@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.moodstocks.android.AutoScannerSession;
 import com.moodstocks.android.MoodstocksError;
 import com.moodstocks.android.Result;
 import com.moodstocks.android.Scanner;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 
 

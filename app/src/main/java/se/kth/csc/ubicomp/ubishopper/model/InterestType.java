@@ -2,6 +2,7 @@ package se.kth.csc.ubicomp.ubishopper.model;
 
 import android.net.Uri;
 import android.widget.ImageView;
+import se.kth.csc.ubicomp.ubishopper.R;
 
 /**
  * Basic data container for User Interest Type.  IE an interest type
@@ -10,6 +11,24 @@ import android.widget.ImageView;
  * Created by mhotan on 5/1/14.
  */
 public class InterestType {
+
+    public static final InterestType INTEREST_TYPE_SPORTS = new InterestType("Sports", R.raw.sport);
+    public static final InterestType INTEREST_TYPE_OUTDOORS = new InterestType("Outdoors", R.raw.outdoors);
+    public static final InterestType INTEREST_TYPE_ELECTRONICS = new InterestType("Electronics", R.raw.eletronics);
+    public static final InterestType INTEREST_TYPE_FASHION = new InterestType("Fashion", R.raw.fashion);
+    public static final InterestType INTEREST_TYPE_JEWELERY = new InterestType("Jewelry", R.raw.jewelry);
+    public static final InterestType INTEREST_TYPE_HOME_FURNISHINGS = new InterestType("Home Furnishing", R.raw.home_furnishing);
+    public static final InterestType INTEREST_TYPE_KITCHEN = new InterestType("Kitchen", R.raw.kitchen);
+    public static final InterestType[] INTEREST_TYPES = {
+            INTEREST_TYPE_SPORTS,
+            INTEREST_TYPE_OUTDOORS,
+            INTEREST_TYPE_ELECTRONICS,
+            INTEREST_TYPE_FASHION,
+            INTEREST_TYPE_JEWELERY,
+            INTEREST_TYPE_HOME_FURNISHINGS,
+            INTEREST_TYPE_KITCHEN,
+    };
+
 
     /**
      * Name of the type of interest.

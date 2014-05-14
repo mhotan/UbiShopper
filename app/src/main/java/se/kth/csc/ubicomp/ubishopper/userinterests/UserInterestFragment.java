@@ -3,14 +3,8 @@ package se.kth.csc.ubicomp.ubishopper.userinterests;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.ActionMode;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.GridView;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 import se.kth.csc.ubicomp.ubishopper.model.MockModel;
 
@@ -29,6 +23,8 @@ import se.kth.csc.ubicomp.ubishopper.model.MockModel;
 public class UserInterestFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
+
+    UserinterestsAdapter adapter;
 
     /**
      * The interest grid view.
@@ -72,7 +68,7 @@ public class UserInterestFragment extends Fragment {
 
         // Set the grid for the grid view.
         // This informs how the grid view will populate each cell.
-        UserinterestsAdapter adapter = new UserinterestsAdapter(
+        adapter = new UserinterestsAdapter(
                 this.getActivity(), MockModel.getInstance().getInterestTypes());
         interestGrid.setAdapter(adapter);
 
@@ -109,9 +105,10 @@ public class UserInterestFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-//        public void onContinue(/*Parameters for user interest*/);
+
+//        void onCheckedStateChange(InterestType type, boolean checked);
     }
 
     /**

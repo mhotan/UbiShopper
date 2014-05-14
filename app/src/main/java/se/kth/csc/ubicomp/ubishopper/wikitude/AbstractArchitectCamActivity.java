@@ -9,7 +9,6 @@ import android.opengl.GLES20;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebView;
-
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.ArchitectView.ArchitectConfig;
 import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
@@ -129,7 +128,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
         // locationProvider used to fetch user position
         this.locationProvider = getLocationProvider( this.locationListener );
-
     }
 
     /**

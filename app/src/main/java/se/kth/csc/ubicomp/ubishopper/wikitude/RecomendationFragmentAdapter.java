@@ -1,19 +1,17 @@
 package se.kth.csc.ubicomp.ubishopper.wikitude;
 
 
-import android.widget.BaseAdapter;
-
-/**
- * Created by zenkig on 5/8/14.
- */
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-
 import se.kth.csc.ubicomp.ubishopper.R;
+
+/**
+ * Created by zenkig on 5/8/14.
+ */
 
 public class RecomendationFragmentAdapter extends BaseAdapter {
 

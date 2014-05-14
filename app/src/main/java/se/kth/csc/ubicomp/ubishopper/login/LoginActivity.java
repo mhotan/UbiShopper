@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 import se.kth.csc.ubicomp.ubishopper.userinterests.UserInterestActivity;
 

@@ -4,9 +4,7 @@ import android.net.Uri;
 import org.json.JSONObject;
 
 import java.text.NumberFormat;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Class that represents a product that can be found in the store.
@@ -31,6 +29,8 @@ public class Product {
 
     private static final int NO_IMAGE = -1;
 
+    private final Collection<InterestType> interestTypes;
+
     /**
      * Creates a new Product
      *
@@ -53,6 +53,7 @@ public class Product {
         this.imageUri = null;
         this.imageResourceId = NO_IMAGE;
         this.onSale = false;
+        this.interestTypes = new HashSet<InterestType>();
     }
 
     public void setImageUri(Uri imageUri) {
@@ -95,6 +96,20 @@ public class Product {
 
     public String getPriceString() {
         return NumberFormat.getCurrencyInstance().format(getPrice());
+    }
+
+    public boolean removeInterestType(InterestType type) {
+        return interestTypes.remove(type);
+    }
+
+    public Product addInterestType(InterestType type) {
+        if (type == null) return this;
+        interestTypes.add(type);
+        return this;
+    }
+
+    public List<InterestType> getInterestTypes() {
+        return new ArrayList<InterestType>(interestTypes);
     }
 
     /**

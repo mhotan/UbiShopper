@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-
 import se.kth.csc.ubicomp.ubishopper.explore.SearchAndScanActivity;
 
 import static se.kth.csc.ubicomp.ubishopper.R.layout.activity_user_interest;
@@ -27,4 +26,13 @@ public class UserInterestActivity extends FragmentActivity implements
     public void onContinue(View view) {
         startActivity(new Intent(this, SearchAndScanActivity.class));
     }
+
+//    @Override
+//    public void onCheckedStateChange(InterestType type, boolean checked) {
+//        if (checked) {
+//            MockModel.getInstance().getUserIntereset().add(type);
+//        } else {
+//            MockModel.getInstance().getUserIntereset().remove(type);
+//        }
+//    }
 }

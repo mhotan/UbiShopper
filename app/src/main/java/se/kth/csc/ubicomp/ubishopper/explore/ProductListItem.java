@@ -5,11 +5,10 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.text.NumberFormat;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 import se.kth.csc.ubicomp.ubishopper.model.Product;
+
+import java.text.NumberFormat;
 
 /**
  * Created by mhotan on 5/8/14.

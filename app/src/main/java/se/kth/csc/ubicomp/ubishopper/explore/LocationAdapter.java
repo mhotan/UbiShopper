@@ -3,7 +3,6 @@ package se.kth.csc.ubicomp.ubishopper.explore;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
-
 import se.kth.csc.ubicomp.ubishopper.model.Location;
 
 /**

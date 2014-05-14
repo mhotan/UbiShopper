@@ -15,15 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.moodstocks.android.MoodstocksError;
 import com.moodstocks.android.Result;
 import com.moodstocks.android.Scanner;
+import se.kth.csc.ubicomp.ubishopper.ProductActivity;
+import se.kth.csc.ubicomp.ubishopper.R;
+import se.kth.csc.ubicomp.ubishopper.model.LocationFactory;
+import se.kth.csc.ubicomp.ubishopper.model.MockModel;
+import se.kth.csc.ubicomp.ubishopper.model.Product;
+import se.kth.csc.ubicomp.ubishopper.wikitude.ExploreNearbyAreaActivity;
 
 import java.util.Locale;
-
-import se.kth.csc.ubicomp.ubishopper.R;
-import se.kth.csc.ubicomp.ubishopper.wikitude.SampleCamHandlePoiDetailActivity;
 
 /**
  * Activity that manages the fragments for scanning location QR Codes and
@@ -123,6 +125,14 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
     }
 
     @Override
+    public void onProductSelected(Product product) {
+        if (product == null) return;
+        MockModel.getInstance().setHighlightedProduct(product);
+        Intent i = new Intent(this, ProductActivity.class);
+        startActivity(i);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
@@ -203,7 +213,7 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
      * @param exploreButton The button that invoked the callback
      */
     public void onExploreSurroundingWorld(View exploreButton) {
-        startActivity(new Intent(this, SampleCamHandlePoiDetailActivity.class));
+        startActivity(new Intent(this, ExploreNearbyAreaActivity.class));
     }
 
 //    Moodstocks Sync listener
@@ -211,6 +221,18 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
     @Override
     public void onScannedResult(Result result) {
         Toast.makeText(this, "Result found " + result.getValue(), Toast.LENGTH_SHORT).show();
+        if (result.getType() == Result.Type.QRCODE) {
+            MockModel.getInstance().setHighlightedLocation(LocationFactory.getInstance().
+                    getLocation(Integer.valueOf(result.getValue())));
+        } else if (result.getType() == Result.Type.IMAGE) {
+            if (result.getValue().equals("nike_1")) {
+                MockModel.getInstance().setHighlightedLocation(LocationFactory.getInstance().
+                        getLocation(Integer.valueOf(1)));
+            } else if (result.getValue().equals("monster")) {
+                MockModel.getInstance().setHighlightedLocation(LocationFactory.getInstance().
+                        getLocation(Integer.valueOf(2)));
+            }
+        }
     }
 
     @Override
@@ -221,7 +243,8 @@ public class SearchAndScanActivity extends ActionBarActivity implements ActionBa
     @Override
     public void onSyncComplete() {
         try {
-            Log.d("Moodstocks SDK", "Sync succeeded ("+ scanner.count() + " images)");
+            int count = scanner.count();
+            Log.d("Moodstocks SDK", "Sync succeeded ("+ count + " images)");
         } catch (MoodstocksError e) {
             e.printStackTrace();
         }

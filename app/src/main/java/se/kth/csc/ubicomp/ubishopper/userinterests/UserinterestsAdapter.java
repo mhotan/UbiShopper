@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import se.kth.csc.ubicomp.ubishopper.R;
 import se.kth.csc.ubicomp.ubishopper.model.InterestType;
 
@@ -43,12 +40,7 @@ public class UserinterestsAdapter extends ArrayAdapter<InterestType> {
         InterestGridItem gridView = (InterestGridItem) inflater.inflate(
                 R.layout.interest_grid_item, parent, false);
         // Extract the components of the grid item.
-        TextView interestLabel = (TextView) gridView.findViewById(R.id.interest_grid_item_label);
-        ImageView interestImage = (ImageView) gridView.findViewById(R.id.interest_image);
-
-        // Populate the fields for the item
-        interestLabel.setText(getItem(position).getName());
-        getItem(position).loadImage(interestImage);
+        gridView.setInterestType(getItem(position));
 
         return gridView;
     }

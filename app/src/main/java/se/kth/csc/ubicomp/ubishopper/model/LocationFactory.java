@@ -9,14 +9,26 @@ import java.util.Map;
  */
 public class LocationFactory {
 
-    private static final Map<Integer, Location> memoryMap = new HashMap<Integer, Location>();
+    private final Map<Integer, Location> memoryMap;
+
+    private static LocationFactory instance;
+
+    private LocationFactory() {
+        memoryMap = new HashMap<Integer, Location>();
+    }
+
+    public static LocationFactory getInstance() {
+        if (instance == null)
+            instance = new LocationFactory();
+        return instance;
+    }
 
     /**
      * Adds location.
      *
      * @param location Location to add to this Factory.
      */
-    static void addLocation(Location location) {
+    void addLocation(Location location) {
         memoryMap.put(location.getId(), location);
     }
 
@@ -26,8 +38,17 @@ public class LocationFactory {
      * @param id ID number of the location.
      * @return Location if it exists, null if it does not exists.
      */
-    public static Location getLocation(int id) {
+    public Location getLocation(int id) {
         return memoryMap.get(id);
+    }
+
+    public Location getLocation(String name) {
+        if (name == null) return null;
+        for (Location location: memoryMap.values()) {
+            if (location.getName().trim().equalsIgnoreCase(name))
+                return location;
+        }
+        return null;
     }
 
     /**
@@ -35,6 +56,6 @@ public class LocationFactory {
      *
      * @return All the current locations.
      */
-    public static Collection<Location> getLocations() { return memoryMap.values(); }
+    public Collection<Location> getLocations() { return memoryMap.values(); }
 
 }

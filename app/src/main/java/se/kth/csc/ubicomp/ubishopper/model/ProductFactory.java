@@ -12,7 +12,32 @@ public class ProductFactory {
     /**
      * Memory Map.
      */
-    private static final Map<UUID, Product> memoryMap = new HashMap<UUID, Product>();
+    private final Map<UUID, Product> memoryMap;
+
+    private ProductFactory() {
+        memoryMap = new HashMap<UUID, Product>();
+    }
+
+    private static ProductFactory instance;
+
+    public static ProductFactory getInstance() {
+        if (instance == null)
+            instance = new ProductFactory();
+        return instance;
+    }
+
+    public Product getProduct(UUID uuid) {
+        return memoryMap.get(uuid);
+    }
+
+    public Product getProduct(String name) {
+        if (name == null) return null;
+        for (Product product: memoryMap.values()) {
+            if (product.getName().equalsIgnoreCase(name.trim()))
+                return product;
+        }
+        return null;
+    }
 
     /**
      * Create a product.
@@ -22,7 +47,7 @@ public class ProductFactory {
      * @param price
      * @return
      */
-    public static Product createProduct(String name, String description, float price) {
+    public Product createProduct(String name, String description, float price) {
         if (name == null) throw new NullPointerException("Null name is not allowed");
         if (description == null)
             description = "";
@@ -40,11 +65,12 @@ public class ProductFactory {
      * @param imageResource
      * @return
      */
-    public static Product createProduct(String name, String description,
+    public Product createProduct(String name, String description,
                                         float price, int imageResource) {
         Product product = createProduct(name, description, price);
         product.setImageResourceId(imageResource);
         return product;
     }
+
 
 }

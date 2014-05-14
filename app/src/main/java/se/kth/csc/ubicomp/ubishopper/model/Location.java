@@ -1,5 +1,8 @@
 package se.kth.csc.ubicomp.ubishopper.model;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 /**
  * Basic class for a Mock Location
  *
@@ -11,9 +14,36 @@ public class Location {
 
     private String name;
 
+    private final Collection<Product> products;
+
     Location(int id, String name) {
         this.id = id;
         this.name = name;
+        this.products = new HashSet<Product>();
+    }
+
+    public Collection<Product> getProducts() {
+        return products;
+    }
+
+    public void clearProducts() {
+        this.products.clear();
+    }
+
+    public boolean removeProduct(Product product) {
+        return this.products.remove(product);
+    }
+
+    public boolean removeProducts(Collection<Product> products) {
+        return this.products.removeAll(products);
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public void addProducts(Collection<Product> products) {
+        this.products.addAll(products);
     }
 
     public void setName(String name) {
@@ -32,11 +62,8 @@ public class Location {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Location location = (Location) o;
-
         if (id != location.id) return false;
-
         return true;
     }
 
