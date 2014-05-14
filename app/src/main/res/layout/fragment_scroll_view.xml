@@ -1,0 +1,179 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="se.kth.csc.ubicomp.ubishopper.userinterests.ScrollViewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/History"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/horizontalScrollView" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/iphone"
+                        android:id="@+id/iphone_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Iphone5"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/iphone_image"
+                        android:layout_alignBottom="@+id/iphone_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext1" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/fruits"
+                        android:id="@+id/fruits_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Banana"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/fruits_image"
+                        android:layout_alignBottom="@+id/fruits_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext2" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/clothes"
+                        android:id="@+id/clothes_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Addidas Hood"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/clothes_image"
+                        android:layout_alignBottom="@+id/clothes_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext3" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/guitar"
+                        android:id="@+id/guitar_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Classic Guitar"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/guitar_image"
+                        android:layout_alignBottom="@+id/guitar_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext4" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/fashionshoes"
+                        android:id="@+id/fashionshoes_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Micheal Kors Shoes"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/fashionshoes_image"
+                        android:layout_alignBottom="@+id/fashionshoes_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext5" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@raw/vegetable"
+                        android:id="@+id/vegetable_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Tomato Juice"
+                        android:textColor="#8bab73"
+                        android:clickable="false"
+                        android:gravity="bottom"
+                        android:layout_alignRight="@+id/vegetable_image"
+                        android:layout_alignBottom="@+id/vegetable_image"
+                        android:layout_margin="15dip"
+                        android:id="@+id/itemtext6" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+</FrameLayout>

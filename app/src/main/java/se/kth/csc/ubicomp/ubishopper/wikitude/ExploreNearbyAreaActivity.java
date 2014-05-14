@@ -6,7 +6,7 @@ import android.net.Uri;
 import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 import org.json.JSONArray;
 
-public class SampleCamHandlePoiDetailActivity extends SampleCamActivity{
+public class ExploreNearbyAreaActivity extends SampleCamActivity{
 
     private static final String MARKER_SELECTED_TAG = "markerselected";
 
@@ -21,11 +21,11 @@ public class SampleCamHandlePoiDetailActivity extends SampleCamActivity{
             public boolean urlWasInvoked(String uriString) {
                 Uri invokedUri = Uri.parse(uriString);
                 if (MARKER_SELECTED_TAG.equalsIgnoreCase(invokedUri.getHost())) {
-                    final Intent poiDetailIntent = new Intent(SampleCamHandlePoiDetailActivity.this, SamplePoiDetailActivity.class);
+                    final Intent poiDetailIntent = new Intent(ExploreNearbyAreaActivity.this, SamplePoiDetailActivity.class);
                     poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_ID, String.valueOf(invokedUri.getQueryParameter("id")) );
                     poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_TITILE, String.valueOf(invokedUri.getQueryParameter("title")) );
                     poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_DESCR, String.valueOf(invokedUri.getQueryParameter("description")) );
-                    SampleCamHandlePoiDetailActivity.this.startActivity(poiDetailIntent);
+                    ExploreNearbyAreaActivity.this.startActivity(poiDetailIntent);
                     return true;
                 }
                 return false;

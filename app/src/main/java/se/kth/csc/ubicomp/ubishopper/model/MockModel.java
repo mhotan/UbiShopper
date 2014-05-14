@@ -10,6 +10,7 @@ import se.kth.csc.ubicomp.ubishopper.R;
  *
  * Created by mhotan on 5/1/14.
  */
+
 public class MockModel {
 
     private static MockModel instance;
@@ -38,6 +39,31 @@ public class MockModel {
                 "Synthetic shirt Dri-Fit Poly helps you stay dry and comfortable ",
                 23.99f, R.raw.nike_shirt));
         // TODO Add more well defined Products
+        productList.add( ProductFactory.createProduct("Addidas Hood",
+                "newest hood with James Lebron Series",
+                43.99f, R.raw.clothes));
+        productList.add( ProductFactory.createProduct("FashionShoes",
+                "Micheal Kors new season women",79.99f,
+                R.raw.fashionshoes));
+        productList.add( ProductFactory.createProduct("ihphone5s",
+                "iphone5s,black, 4.0inches with unlocked and brand new with touchID",
+                499.99f,R.raw.iphone));
+        productList.add( ProductFactory.createProduct("Guitar",
+                "Classical guitar for new learners",169.99f,
+                R.raw.guitar));
+        productList.add( ProductFactory.createProduct("Crown Banana",
+                "per kg, fresh from Malaysia tropical",4.99f,
+                R.raw.fruits));
+        productList.add( ProductFactory.createProduct("Organic Tomato",
+                "per kg, local farm produced, GMO free!",3.99f,
+                R.raw.vegetable));
+        productList.add( ProductFactory.createProduct("Red Bull",
+                "Redbull keep you energetic all day long",5.99f,
+                R.raw.drink));
+        productList.add( ProductFactory.createProduct("Moleskine Music Note",
+                "Legendary Notebook for all your daily inspirations",17.99f,
+                R.raw.moleskine));
+
 
         // Populate the array.
         products = new Product[productList.size()];

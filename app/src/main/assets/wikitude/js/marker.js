@@ -27,7 +27,7 @@ function Marker(poiData) {
         zOrder: 1,
         offsetY: 0.55,
         style: {
-            textColor: '#FFFFFF',
+            textColor: '#75b127',
             fontStyle: AR.CONST.FONT_STYLE.BOLD
         }
     });
@@ -36,7 +36,7 @@ function Marker(poiData) {
         zOrder: 1,
         offsetY: -0.55,
         style: {
-            textColor: '#FFFFFF'
+            textColor: '#f074ac'
         }
     });
 
@@ -58,7 +58,7 @@ function Marker(poiData) {
         horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.CENTER,
         opacity: 0.8,
         style: {
-            fillColor: "#0066ff"
+            fillColor: "#bff02d"
         }
     });
 
